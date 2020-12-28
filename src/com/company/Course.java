@@ -13,6 +13,7 @@ public class Course {
     private String room;
     private String branch;
     private double price;
+    private final int maxGrade = 100;
     private ArrayList<Pair<Student  , Double >> grades;
     private ArrayList<Pair<Student  , String>> survey;
     private Date startDate;
