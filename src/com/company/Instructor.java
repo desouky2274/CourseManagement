@@ -1,7 +1,5 @@
 package com.company;
 
-import javafx.util.Pair;
-
 import java.util.ArrayList;
 
 public class Instructor extends User{
@@ -15,8 +13,5 @@ public class Instructor extends User{
     void publish(String message  , Course c){
         c.setPublish(c.getPublish() + "\n" + message);
     }
-
-
-
 
 }

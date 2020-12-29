@@ -28,6 +28,20 @@ public class Course {
         return courseName + " " + courseCode + "\n";
     }
 
+    public Course(String courseCode, String courseName, int numberOfHours, String parentCourse, String room, String branch, double price, Date startDate, Date endDate, int daysOfCourse, String publish) {
+        this.courseCode = courseCode;
+        this.courseName = courseName;
+        this.numberOfHours = numberOfHours;
+        this.parentCourse = parentCourse;
+        this.room = room;
+        this.branch = branch;
+        this.price = price;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.daysOfCourse = daysOfCourse;
+        this.publish = publish;
+    }
+
     public Course(String courseCode, String courseName, int numberOfHours, ArrayList<Instructor> list, String parentCourse, String room, String branch, double price, ArrayList<Pair<Student, Double>> grades, ArrayList<Pair<Student, String>> survey, Date startDate, Date endDate, int daysOfCourse) {
         this.courseCode = courseCode;
         this.courseName = courseName;
