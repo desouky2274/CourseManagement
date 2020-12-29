@@ -45,6 +45,20 @@ public class Course {
         this.daysOfCourse = daysOfCourse;
     }
 
+    public Course(String courseCode, String courseName, int numberOfHours, ArrayList<Instructor> list, String parentCourse, String room, String branch, double price, Date startDate, Date endDate, int daysOfCourse) {
+        this.courseCode = courseCode;
+        this.courseName = courseName;
+        this.numberOfHours = numberOfHours;
+        this.list = list;
+        this.parentCourse = parentCourse;
+        this.room = room;
+        this.branch = branch;
+        this.price = price;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.daysOfCourse = daysOfCourse;
+    }
+
     public void view(){
         System.out.println(publish);
     }

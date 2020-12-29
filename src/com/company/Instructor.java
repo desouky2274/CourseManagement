@@ -18,6 +18,10 @@ public class Instructor extends User{
         Courses = courses;
     }
 
+    public Instructor(String fname , String mname , String lname , long id, String password) {
+        super(fname , mname , lname ,id, password);
+    }
+
     public Instructor(ArrayList<Student> learners, ArrayList<Course> courses) {
         this.learners = learners;
         Courses = courses;

@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Admin extends User{
 
-    private ArrayList<User> allUsers;
+    private static ArrayList<User> allUsers;// to be shared between all admins--> static
 
     public ArrayList<User>getUsers(){
         return allUsers;
@@ -58,7 +58,7 @@ public class Admin extends User{
 
     }
 
-    public void addUser(User u){
+    public static void addUser(User u){
         allUsers.add(u);
     }
 

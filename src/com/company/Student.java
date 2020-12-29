@@ -42,6 +42,11 @@ public class Student extends User{
         this.courses = courses;
     }
 
+    public Student(String fName, String mName, String lName, long id, String password, double gpa) {
+        super(fName, mName, lName, id, password);
+        this.gpa = gpa;
+    }
+
     public String AllCourses(){
         return courses.toString();
     }
