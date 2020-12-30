@@ -3,6 +3,7 @@ package com.company;
 import javafx.util.Pair;
 import java.io.File;
 import java.net.URL;
+import java.sql.*;
 import java.util.ArrayList;
 import java.io.*;
 import java.util.Date;
@@ -13,32 +14,35 @@ public class Main {
     public static void main(String[] args) throws Exception{
 
 
-        ArrayList<Pair<Student , String>>  list1 = new ArrayList<>();
-        ArrayList<Pair<Student , Double>>  list2 = new ArrayList<>();
-        ArrayList<Instructor> list3 = new ArrayList<>();
-        ArrayList<Course> list4 = new ArrayList<>();
-        ArrayList<Student> list5 = new ArrayList<>();
-
-
-        Course c1 = new Course("c112" , "PL" , 3 ,list3 , "CS" , "H2" , "Helwan" , 2000 , list2 , list1 , new Date() , new Date() , 90);
-        Student s1 = new Student("Omar" , "Essam" , "Desouky" , 201900520 , "2274" , 3.1 , list4);
-        Instructor i1 = new Instructor("Mohammed" , "El-saeed" , "Mohammed" , 201900520 , "2274" ,list5 , list4);
-
-        Admin m1 = new Admin();
-        Admin m2 = new Admin("Ahmed" , "Fouad" , "hoh" , 201900555 , "ooo");
-
-        m1.addUser(s1);
-        m1.addUser(i1);
-        m1.addUser(m2);
-        File allUsers = new File("D:\\Project\\allUsers.txt");
-        //
-
-
-
-
-
-
-
-
+        try {
+            Connection con = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-TBQGV9O:1433;databaseName=courseManegmentSystem;user=amr;password=123");
+            Statement stat = con.createStatement();
+            String sql = "select* from student";
+            ResultSet rs = stat.executeQuery(sql);
+            while(rs.next()){
+                int idtemp = rs.getInt("student_ID");
+                String StudentFname = rs.getString("student_Fname");
+                String StudentMname = rs.getString("student_Mname");
+                String StudentLname = rs.getString("student_lname");
+                double StudentGBA = rs.getDouble("student_gba");
+                System.out.println(idtemp + "  "  + StudentFname + " " + StudentMname + " " + StudentLname + " " + StudentGBA);
+            }
+                float g = 3.2f;
+                String fname="Omar";
+                String mname = "Essam";
+                String lname="Desouky";
+                String course1 ="cs111";
+                String course2 ="cs112";
+                String course3="cs122";
+                String course4 ="cs211";
+                String  course5 ="cs221";
+                String course6="cs222";
+                String course7="cs321";
+                sql="insert into student(student_Fname,student_Mname,student_lname,student_gba) values ('"+fname+"','"+mname+"','"+lname+"' , '"+g+"' )";
+                stat.executeUpdate(sql);
+        } catch (SQLException e) {
+            System.out.println("oops");
+            e.printStackTrace();
+        }
     }
 }
