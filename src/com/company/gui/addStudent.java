@@ -8,15 +8,11 @@ package com.company.gui;
 import javax.swing.*;
 import java.sql.*;
 
-/**
- *
- * @author USER
- */
 public class addStudent extends javax.swing.JFrame {
 
     public  static Connection con;
     public static Statement stat;
-    public static int idI;
+
     static {
         try {
             con = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-QA5TUAT:1433;databaseName=courseManegmentSystem;user=omar;password=admin");
@@ -27,10 +23,6 @@ public class addStudent extends javax.swing.JFrame {
         }
     }
     public addStudent() {
-        initComponents();
-    }
-    public addStudent(int idI) {
-        this.idI = idI;
         initComponents();
     }
 
@@ -244,12 +236,13 @@ public class addStudent extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void firstnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_firstnameActionPerformed
+
+    }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+
         try {
+                int result;
                 String sql;
                 String fname = firstname.getText();
                 String mname = midlename.getText();
@@ -264,23 +257,11 @@ public class addStudent extends javax.swing.JFrame {
                  course[5] = Course6.getText();
                  course[6] = Course7.getText();
 
-                if (course[0].equals(""));
-                course[0] = null;
-                if (course[1].equals(""));
-                course[1] = null;
-                if (course[2].equals(""));
-                course[2] = null;
-                if (course[3].equals(""));
-                course[3] = null;
-                if (course[4].equals(""));
-                course[4] = null;
-                if (course[5].equals(""));
-                course[5] = null;
-                if (course[6].equals(""));
-                course[6] = null;
+
+            System.out.println(Course1.getText());
 
                 sql = "insert into student(student_Fname,student_Mname,student_lname,student_gpa,course1,course2,course3,course4,course5,course6,course7) values ('" + fname + "','" + mname + "','" + lname + "',0,'" + course[0] + "','" + course[1] + "','" + course[2] + "','" + course[3] + "','" + course[4] + "','" + course[5] + "','" + course[6] + "')";
-                stat.executeUpdate(sql);
+                result = stat.executeUpdate(sql);
                 sql = "select student_ID from student where student_Fname = '" + fname + "' and student_Mname = '" + mname + "' and student_lname = '" + lname + "' ";
                 ResultSet rc = stat.executeQuery(sql);
                 rc.next();
@@ -290,16 +271,21 @@ public class addStudent extends javax.swing.JFrame {
                 sql = "select student_ID from student where student_Fname = '" + fname + "' and student_Mname = '" + mname + "' and student_lname = '" + lname + "' ";
                 ResultSet ra = stat.executeQuery(sql);
                 ra.next();
+                int idI = 101;
                 int id2 = ra.getInt("student_ID");
+
                 for (int i = 0; i < 7; i++) {
-                    if (course[i] != null)
-                    sql ="insert into"+ course[i]+"(studentid,instructorID,coursecode) values ("+id2+","+idI+","+course[i]+")";
+                    if (course[i] != null) {
+                        System.out.println("test");
+                        sql = "insert into " + course[i] + " (studentid,instructorID) values (" + id2 + "," + idI + ")";
+                        stat.executeUpdate(sql);
+                    }
                 }
 
-            /*if(result ==1)
+            if(result ==1)
             {
                 JOptionPane.showMessageDialog(null,"Record has been inserted successfully","Success",JOptionPane.INFORMATION_MESSAGE);
-            }*/
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
