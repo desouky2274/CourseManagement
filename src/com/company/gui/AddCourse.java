@@ -2,7 +2,6 @@ package com.company.gui;
 
 import javax.swing.*;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,7 +14,7 @@ public class AddCourse extends javax.swing.JFrame {
     public static int id;
     static {
         try {
-            con = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-QA5TUAT:1433;databaseName=courseManegmentSystem;user=omar;password=admin");
+            con = Connection1.getCon();//DriverManager.getConnection("jdbc:sqlserver://DESKTOP-QA5TUAT:1433;databaseName=courseManegmentSystem;user=omar;password=admin");
             stat = con.createStatement();
         } catch (SQLException ex)
         {
