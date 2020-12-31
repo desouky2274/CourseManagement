@@ -116,7 +116,7 @@ public class Student extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
 
-        MakeSurvey m = new MakeSurvey();
+        MakeSurvey m = new MakeSurvey(id);
          m.setVisible(true);
          dispose();
     }
