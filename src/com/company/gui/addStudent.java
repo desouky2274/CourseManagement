@@ -1,18 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.company.gui;
 
 import javax.swing.*;
 import java.sql.*;
+import java.util.ArrayList;
 
 
 public class addStudent extends javax.swing.JFrame {
 
     public  static Connection con;
     public static Statement stat;
+    public static int id;
+    public static String St_fn;
+    public static String St_mn;
+    public static String St_ln;
     static {
         try {
             con = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-QA5TUAT:1433;databaseName=courseManegmentSystem;user=omar;password=admin");
@@ -107,7 +108,11 @@ public class addStudent extends javax.swing.JFrame {
         jButton1.setText("OK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                try {
+                    jButton1ActionPerformed(evt);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
             }
         });
 
@@ -361,20 +366,21 @@ public class addStudent extends javax.swing.JFrame {
         admin m = new admin();
          m.setVisible(true);
          dispose();// TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }
 
-    private void firstnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_firstnameActionPerformed
+    private void firstnameActionPerformed(java.awt.event.ActionEvent evt) {
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        int id =10001;
+    }
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
         String sql;
         String fname=firstname.getText();
         String mname=midlename.getText();
         String lname=lastname.getText();
         String pass=password.getText();
+        St_fn = fname;
+        St_mn = mname;
+        St_ln = lname;
         String course1=(String) Course1.getSelectedItem();
         String course2=(String) Course2.getSelectedItem();
         String course3=(String) Course3.getSelectedItem();
@@ -389,38 +395,56 @@ public class addStudent extends javax.swing.JFrame {
         String instructor_id5=instructor5.getText();
         String instructor_id6=instructor6.getText();
         String instructor_id7=instructor7.getText();
-         sql="insert into student(student_Fname,student_Mname,student_lname,student_gba,course1,course2,course3,course4,course5,course6,course7) values ('"+fname+"','"+mname+"','"+lname+"',0,'"+course1+"','"+course2+"','"+course3+"','"+course4+"','"+course5+"','"+course6+"','"+course7+"')";
-        
-        sql="select student_id from student where student_Fname = '"+fname+"' and student_Mname = '"+mname+"' and student_lname = '"+lname+"' ";
-        sql="insert into "+Course1+" (studentId ,instructorID) values ('"+id+"','"+instructor_id1+"')";
-        sql="insert into "+Course2+" (student_id ,instructor_id) values ('"+id+"','"+instructor_id2+"')";
-        sql="insert into "+Course3+" (student_id ,instructor_id) values ('"+id+"','"+instructor_id3+"')";
-        sql="insert into "+Course4+" (student_id ,instructor_id) values ('"+id+"','"+instructor_id4+"')";
-        sql="insert into "+Course5+" (student_id ,instructor_id) values ('"+id+"','"+instructor_id5+"')";
-        sql="insert into "+Course6+" (student_id ,instructor_id) values ('"+id+"','"+instructor_id6+"')";
-        sql="insert into "+Course7+" (student_id ,instructor_id) values ('"+id+"','"+instructor_id7+"')";
-        
+         sql="insert into student(student_Fname,student_Mname,student_lname,student_gpa,course1,course2,course3,course4,course5,course6,course7) values ('"+fname+"','"+mname+"','"+lname+"',0,'"+course1+"','"+course2+"','"+course3+"','"+course4+"','"+course5+"','"+course6+"','"+course7+"')";
+        stat.executeUpdate(sql);
+        sql="select student_ID from student where student_Fname = '"+fname+"' and student_Mname = '"+mname+"' and student_lname = '"+lname+"' ";
+        ResultSet ra = stat.executeQuery(sql);
+        ra.next();
+        id = ra.getInt("student_ID");
+        sql = "insert into allPassword (id,pass,person) values ("+id+",'"+pass+"','student')";
+        stat.executeUpdate(sql);
+        sql="insert into "+course1+" (studentId ,instructorID) values ("+id+","+instructor_id1+")";
+        stat.executeUpdate(sql);
+        sql="insert into "+course2+" (studentId ,instructorID) values ('"+id+"',"+instructor_id2+")";
+        stat.executeUpdate(sql);
+        sql="insert into "+course3+" (studentId ,instructorID) values ("+id+","+instructor_id3+")";
+        stat.executeUpdate(sql);
+        sql="insert into "+course4+" (studentId ,instructorID) values ("+id+","+instructor_id4+")";
+        stat.executeUpdate(sql);
+        sql="insert into "+course5+" (studentId ,instructorID) values ("+id+","+instructor_id5+")";
+        stat.executeUpdate(sql);
+        sql="insert into "+course6+" (studentId ,instructorID) values ("+id+","+instructor_id6+")";
+        stat.executeUpdate(sql);
+        sql="insert into "+course7+" (studentId ,instructorID) values ("+id+","+instructor_id7+")";
+        stat.executeUpdate(sql);
     }
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {
          try {
-            String[] course = new String[7];
-           // int student_id = ;
-            String sql = "select course1,course2,course3,course4,course5,course6,course7 from student where student_id =" + student_id + "";
-            ResultSet rs = stat.executeQuery(sql);
-            rs.next();
-            for (int x = 0; x < 7; x++) {
-                course[x] = rs.getString("course" + (x + 1));
-            }
+             String sql;
+             System.out.println();
+             sql = "select courseCode from course";
+             ResultSet ra = stat.executeQuery(sql);
+             ArrayList <String> course = new ArrayList<>();
+             while (ra.next())
+             {
+                 course.add(ra.getString("courseCode"));
+             }
 
-        DefaultComboBoxModel mod = new DefaultComboBoxModel(course);
-        Course1.setModel(mod);
-        Course2.setModel(mod);
-        Course3.setModel(mod);
-        Course4.setModel(mod);
-        Course5.setModel(mod);
-        Course6.setModel(mod);
-        Course7.setModel(mod);
+            DefaultComboBoxModel mod = new DefaultComboBoxModel(course.toArray());
+            Course1.setModel(mod);
+             DefaultComboBoxModel mod2 = new DefaultComboBoxModel(course.toArray());
+            Course2.setModel(mod2);
+             DefaultComboBoxModel mod3= new DefaultComboBoxModel(course.toArray());
+            Course3.setModel(mod3);
+             DefaultComboBoxModel mod4 = new DefaultComboBoxModel(course.toArray());
+            Course4.setModel(mod4);
+             DefaultComboBoxModel mod5 = new DefaultComboBoxModel(course.toArray());
+            Course5.setModel(mod5);
+             DefaultComboBoxModel mod6 = new DefaultComboBoxModel(course.toArray());
+            Course6.setModel(mod6);
+             DefaultComboBoxModel mod7 = new DefaultComboBoxModel(course.toArray());
+            Course7.setModel(mod7);
     }
     catch (SQLException e) {
             System.out.println("oops");
