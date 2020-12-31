@@ -18,7 +18,7 @@ public class Course {
     private Date startDate;
     private Date endDate;
     private int daysOfCourse;
-    private String publish;
+    private boolean publish;
 
     public void makeSurvey(Student ss ,String s){
         survey.add(new Pair<>(ss , s));
@@ -28,7 +28,7 @@ public class Course {
         return courseName + " " + courseCode + "\n";
     }
 
-    public Course(String courseCode, String courseName, int numberOfHours, String parentCourse, String room, String branch, double price, Date startDate, Date endDate, int daysOfCourse, String publish) {
+    public Course(String courseCode, String courseName, int numberOfHours, String parentCourse, String room, String branch, double price, Date startDate, Date endDate, int daysOfCourse, boolean publish) {
         this.courseCode = courseCode;
         this.courseName = courseName;
         this.numberOfHours = numberOfHours;
@@ -114,7 +114,7 @@ public class Course {
         this.daysOfCourse = daysOfCourse;
     }
 
-    public void setPublish(String publish) {
+    public void setPublish(boolean publish) {
         this.publish = publish;
     }
 
@@ -170,7 +170,7 @@ public class Course {
         return daysOfCourse;
     }
 
-    public String getPublish() {
+    public boolean getPublish() {
         return publish;
     }
 

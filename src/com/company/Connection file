@@ -1,0 +1,31 @@
+public  static Connection con;
+    public static Statement stat;
+    static {
+        try {
+            con = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-QA5TUAT:1433;databaseName=courseManegmentSystem;user=omar;password=admin");
+            stat = con.createStatement();
+        } catch (SQLException ex)
+        {
+            JOptionPane.showMessageDialog(null,"SQL connection not found","Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+
+     while (rs.next()) {
+                            for (int i = 0; i <5; i++) {
+                                course[i] = rs.getString("course"+(i+1));
+                                if (course[i] != null) {
+                                    j = 0;
+                                    System.out.println("Size = "+size+" j = "+j);
+                                    while (j < size) {
+                                        System.out.println(course[i]+" "+test2.getItemAt(j));
+                                        if (course[i].equals(test2.getItemAt(j))) {
+                                            System.out.println(course[i] + " " + test2.getItemAt(j));
+                                            break;
+                                        }
+                                            j++;
+                                    }
+                                    test2.addItem(course[i]);
+                                }
+                             }
+                        }

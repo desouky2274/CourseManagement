@@ -10,8 +10,8 @@ public class Instructor extends User{
         c.addGrades(s,g);
     }
 
-    void publish(String message  , Course c){
+  /*  void publish(String message  , Course c){
         c.setPublish(c.getPublish() + "\n" + message);
-    }
+    }*/
 
 }

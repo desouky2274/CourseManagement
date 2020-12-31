@@ -25,6 +25,11 @@ public class Student extends User{
     public Student(long gpa){
         this.gpa = gpa;
     }
+    public Student(long id, String password, double gpa)
+    {
+        super(id, password);
+        this.gpa = gpa;
+    }
     public Student(long id, String password, double gpa, ArrayList<Course> courses) {
         super(id, password);
         this.gpa = gpa;
