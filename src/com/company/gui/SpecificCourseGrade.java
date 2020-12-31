@@ -11,7 +11,7 @@ public class SpecificCourseGrade extends javax.swing.JFrame {
     public static String courseCode;
     static {
         try {
-            con = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-QA5TUAT:1433;databaseName=courseManegmentSystem;user=omar;password=admin");
+            con = Connection1.getCon();//con = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-QA5TUAT:1433;databaseName=courseManegmentSystem;user=omar;password=admin");
             stat = con.createStatement();
         } catch (SQLException ex)
         {
