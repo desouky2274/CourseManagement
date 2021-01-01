@@ -6,6 +6,7 @@
 package com.company.gui;
 
 import javax.swing.*;
+import java.awt.*;
 import java.sql.*;
 
 /**
@@ -28,6 +29,8 @@ public class test extends javax.swing.JFrame {
     }
     public test() {
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
 
     /**

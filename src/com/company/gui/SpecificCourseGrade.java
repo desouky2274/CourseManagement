@@ -1,6 +1,7 @@
 package com.company.gui;
 
 import javax.swing.*;
+import java.awt.*;
 import java.sql.*;
 
 public class SpecificCourseGrade extends javax.swing.JFrame {
@@ -20,12 +21,16 @@ public class SpecificCourseGrade extends javax.swing.JFrame {
     }
     public SpecificCourseGrade() {
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
 
     public SpecificCourseGrade(int id,String courseCode) {
         this.id = id;
         this.courseCode = courseCode;
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
 
 

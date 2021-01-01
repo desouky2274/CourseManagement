@@ -1,8 +1,9 @@
 package com.company.gui;
 
 import javax.swing.*;
+import java.awt.*;
 import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -23,10 +24,14 @@ public class DropCourse extends javax.swing.JFrame {
     }
     public DropCourse() {
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
     public DropCourse(int id) {
         this.id = id;
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
 
     @SuppressWarnings("unchecked")
@@ -43,6 +48,15 @@ public class DropCourse extends javax.swing.JFrame {
         jLabel1.setText("Enter Course Code");
 
         jButton1.setText("Drop");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                    jButton1ActionPerformed(evt);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+            }
+        });
 
         jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -87,11 +101,38 @@ public class DropCourse extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
+        try {
+            int courseNumber = 1;
+            String courseCode = jTextField1.getText();
+            String sql = "SELECT course1,course2,course3,course4,course5,course6,course7 FROM student WHERE student_ID = "+id;
+            ResultSet rc = stat.executeQuery(sql);
+            rc.next();
+            for (int i = 1; i <= 7; i++) {
+                if (rc.getString("course"+i).equals(courseCode)){
+                    courseNumber = i;
+                }
+            }
+             sql = "UPDATE student SET course" + courseNumber + " = null WHERE student_ID = "+id;
+            System.out.println(1);
+            int r1 = stat.executeUpdate(sql);
+            sql = "DELETE FROM "+courseCode+" WHERE studentId = "+id;
+            System.out.println(2);
+            int r2 = stat.executeUpdate(sql);
+            System.out.println(3);
+            if (r1 + r2 == 2){
+                System.out.println(4);
+                JOptionPane.showMessageDialog(null,courseCode+" has been dropped","Success",JOptionPane.INFORMATION_MESSAGE);
+            }
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         UpdateInfo i = new UpdateInfo();
          i.setVisible(true);
          dispose();
-        // TODO add your handling code here:
     }
 
     public static void main(String args[]) {

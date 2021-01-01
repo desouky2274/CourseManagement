@@ -7,14 +7,12 @@
 package com.company.gui;
 
 import javax.swing.*;
+import java.awt.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- *
- * @author USER
- */
+
 public class updateStudent extends javax.swing.JFrame {
 
     public  static Connection con;
@@ -30,10 +28,11 @@ public class updateStudent extends javax.swing.JFrame {
     }
     public updateStudent() {
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
@@ -48,13 +47,13 @@ public class updateStudent extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("UBDATE STUDENT");
+        jLabel1.setText("UPDATE STUDENT");
 
-        jLabel2.setText("student id");
+        jLabel2.setText("Student ID");
 
-        jLabel3.setText("what need to update");
+        jLabel3.setText("What to update");
 
-        jLabel4.setText("update");
+        jLabel4.setText("Update");
 
         column_update.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "student_Fname", "student_Mname", "student_lname", "student_gpa", "course1", "course2", "course3", "course4", "course5", "course6", "course7", "studentLevel" }));
 

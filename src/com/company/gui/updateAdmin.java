@@ -2,8 +2,8 @@
 package com.company.gui;
 
 import javax.swing.*;
+import java.awt.*;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -26,6 +26,8 @@ public class updateAdmin extends javax.swing.JFrame {
     }
     public updateAdmin() {
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
 
 
@@ -45,7 +47,7 @@ public class updateAdmin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel4.setText("update");
+        jLabel4.setText("Update");
 
         column_update.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin_Fname", "admin_Mname", "admin_lname" }));
 
@@ -67,11 +69,11 @@ public class updateAdmin extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("UBDATE ADMIN");
+        jLabel1.setText("UPDATE ADMIN");
 
-        jLabel2.setText("admin id");
+        jLabel2.setText("Admin ID");
 
-        jLabel3.setText("what need to update");
+        jLabel3.setText("What to update");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

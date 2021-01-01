@@ -6,6 +6,7 @@
 package com.company.gui;
 
 import javax.swing.*;
+import java.awt.*;
 import java.sql.*;
 
 /**
@@ -27,6 +28,8 @@ public class addAdmin extends javax.swing.JFrame {
     }
     public addAdmin() {
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
 
 
@@ -166,7 +169,7 @@ public class addAdmin extends javax.swing.JFrame {
             sql = "insert into allpassword(id,pass,person)values('" + id + "','" + pass + "','admin')";
             int result = stat.executeUpdate(sql);
             if (result == 1) {
-                JOptionPane.showMessageDialog(null, "Record has been inserted successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Admin account has been created successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
             }
         }catch (SQLException ex){
             ex.printStackTrace();

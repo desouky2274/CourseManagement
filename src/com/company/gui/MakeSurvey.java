@@ -1,6 +1,7 @@
 package com.company.gui;
 
 import javax.swing.*;
+import java.awt.*;
 import java.sql.*;
 
 
@@ -9,7 +10,8 @@ public class MakeSurvey extends javax.swing.JFrame {
 
     public  static Connection con;
     public static Statement stat;
-    public static int id;
+    public static int id;//ID of the student
+
     static {
         try {
             con = Connection1.getCon();//con = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-QA5TUAT:1433;databaseName=courseManegmentSystem;user=omar;password=admin");
@@ -21,13 +23,16 @@ public class MakeSurvey extends javax.swing.JFrame {
     }
     public MakeSurvey() {
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
+
     public MakeSurvey(int id) {
         this.id = id;
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
-
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -51,9 +56,8 @@ public class MakeSurvey extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("select coure");
-
-        jButton1.setText("SubmitSurvey");
+        jLabel1.setText("Select Course");
+        jButton1.setText("Submit Survey");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
@@ -83,7 +87,7 @@ public class MakeSurvey extends javax.swing.JFrame {
         Good.setText("Good");
 
         buttonGroup.add(Avarage);
-        Avarage.setText("Avarage");
+        Avarage.setText("Average");
 
         buttonGroup.add(poor);
         poor.setText("Poor");
@@ -153,11 +157,7 @@ public class MakeSurvey extends javax.swing.JFrame {
             Student s = new Student();
              s.setVisible(true);
             dispose();
-
-
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {
          try {
@@ -207,10 +207,8 @@ public class MakeSurvey extends javax.swing.JFrame {
     if (survey != null)
     {
         try {
-            id = 10032;
-            System.out.println(id);
-            sql = "UPDATE " + select_course.getSelectedItem() + " SET survey = '" + survey + "' WHERE studentId = " + 10032;
-            System.out.println("done");
+
+            sql = "UPDATE " + select_course.getSelectedItem() + " SET survey = '" + survey + "' WHERE studentId = " + id;
             int result = stat.executeUpdate(sql);
             if (result == 1){
                 JOptionPane.showMessageDialog(null,"Thanks for filling this survey","Success",JOptionPane.INFORMATION_MESSAGE);

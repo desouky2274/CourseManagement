@@ -1,15 +1,21 @@
 package com.company.gui;
 
 
+import java.awt.*;
+
 public class UpdateInfo extends javax.swing.JFrame {
 
     public static int id;
     public UpdateInfo() {
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
     public UpdateInfo(int id) {
         this.id = id;
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
 
 
@@ -48,7 +54,7 @@ public class UpdateInfo extends javax.swing.JFrame {
         });
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton4.setText("SetNewPassword");
+        jButton4.setText("Set New Password");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -89,7 +95,7 @@ public class UpdateInfo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        AddCourse a = new AddCourse(id);
+        addCourse a = new addCourse(id);
          a.setVisible(true);
          dispose();
 

@@ -1,13 +1,14 @@
 package com.company.gui;
 
 import javax.swing.*;
+import java.awt.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 
-public class AddCourse extends javax.swing.JFrame {
+public class addCourse extends javax.swing.JFrame {
 
     public  static Connection con;
     public static Statement stat;
@@ -21,12 +22,16 @@ public class AddCourse extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"SQL connection not found","Error",JOptionPane.ERROR_MESSAGE);
         }
     }
-    public AddCourse() {
+    public addCourse() {
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
-    public AddCourse(int id) {
+    public addCourse(int id) {
         this.id = id;
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
 
 
@@ -41,9 +46,9 @@ public class AddCourse extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("CourseCode");
+        jLabel1.setText("Course Code");
 
-        jButton1.setText("AddCourse");
+        jButton1.setText("Add Course");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -104,8 +109,10 @@ public class AddCourse extends javax.swing.JFrame {
                         System.out.println(course[x]);
                         String q="course"+(x+1);
                         sql = "UPDATE student  SET "+q+" = '"+CourseCode.getText() +"' where student_id = "+student_id;
-                        int r = stat.executeUpdate(sql);
-                        if (r == 1)
+                        int r1 = stat.executeUpdate(sql);
+                        sql = "INSERT INTO "+CourseCode.getText()+" (studentId) values ("+student_id+")";
+                        int r2 = stat.executeUpdate(sql);
+                        if (r2 + r1 == 2)
                         {
                             JOptionPane.showMessageDialog(null, "Record has been inserted successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
                         }
@@ -142,20 +149,20 @@ public class AddCourse extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(addCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(addCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(addCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(addCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddCourse().setVisible(true);
+                new addCourse().setVisible(true);
             }
         });
     }

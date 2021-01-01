@@ -1,5 +1,6 @@
 package com.company.gui;
 import javax.swing.*;
+import java.awt.*;
 import java.sql.*;
 
 
@@ -20,9 +21,13 @@ public class AllCourses extends javax.swing.JFrame {
     public AllCourses(int id) {
         this.id = id;
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
     public AllCourses() {
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
 
 
@@ -43,7 +48,7 @@ public class AllCourses extends javax.swing.JFrame {
             }
         });
 
-        show.setText("show");
+        show.setText("Show");
         show.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {

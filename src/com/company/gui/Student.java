@@ -1,14 +1,20 @@
 package com.company.gui;
 
+import java.awt.*;
+
 public class Student extends javax.swing.JFrame {
 
     public static int id;
     public Student() {
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
     public Student(int id) {
         this.id = id;
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
     public void setID(int id)
     {
@@ -26,28 +32,28 @@ public class Student extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        ShowAllCourses.setText("ShowAllCourses");
+        ShowAllCourses.setText("Show All Courses");
         ShowAllCourses.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ShowAllCoursesActionPerformed(evt);
             }
         });
 
-        jButton1.setText("UpdateInfo");
+        jButton1.setText("Update Info");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("GetGrades");
+        jButton2.setText("Get Grades");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jButton3.setText("MakeSurvey");
+        jButton3.setText("Make Survey");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);

@@ -2,6 +2,7 @@
 package com.company.gui;
 
 import javax.swing.*;
+import java.awt.*;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -25,6 +26,8 @@ public class addStudent extends javax.swing.JFrame {
     }
     public addStudent() {
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
 
 
@@ -86,14 +89,14 @@ public class addStudent extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("firstname");
+        jLabel1.setText("First name");
 
-        jLabel2.setText("midlename");
+        jLabel2.setText("Middle name");
 
-        jLabel3.setText("lastname");
+        jLabel3.setText("Last name");
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel4.setText("course1");
+        jLabel4.setText("Course1");
 
         firstname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,9 +104,9 @@ public class addStudent extends javax.swing.JFrame {
             }
         });
 
-        jLabel11.setText("add student");
+        jLabel11.setText("Add Student");
 
-        jLabel12.setText("password");
+        jLabel12.setText("Password");
 
         jButton1.setText("OK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -123,51 +126,51 @@ public class addStudent extends javax.swing.JFrame {
             }
         });
 
-        jLabel13.setText("course code");
+        jLabel13.setText("Course Code");
 
-        jLabel14.setText("instructor id");
+        jLabel14.setText("Instructor ID");
 
         jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel15.setText("course 2");
+        jLabel15.setText("Course 2");
 
-        jLabel16.setText("course code");
+        jLabel16.setText("Course Code");
 
-        jLabel17.setText("instructor id");
+        jLabel17.setText("Instructor ID");
 
         jLabel18.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel18.setText("course 3");
+        jLabel18.setText("Course 3");
 
-        jLabel19.setText("course code");
+        jLabel19.setText("Course Code");
 
-        jLabel20.setText("instructor id");
+        jLabel20.setText("Cnstructor ID");
 
         jLabel21.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel21.setText("course 4");
+        jLabel21.setText("Course 4");
 
-        jLabel22.setText("course code");
+        jLabel22.setText("Course Code");
 
-        jLabel23.setText("instructor id");
+        jLabel23.setText("Instructor ID");
 
         jLabel24.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel24.setText("course 5");
+        jLabel24.setText("Course 5");
 
-        jLabel25.setText("course code");
+        jLabel25.setText("Course Code");
 
-        jLabel26.setText("instructor id");
+        jLabel26.setText("Instructor ID");
 
         jLabel27.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel27.setText("course 6");
+        jLabel27.setText("Course 6");
 
-        jLabel28.setText("course code");
+        jLabel28.setText("Course Code");
 
-        jLabel29.setText("instructor id");
+        jLabel29.setText("Instructor ID");
 
         jLabel30.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel30.setText("course 7");
+        jLabel30.setText("Course 7");
 
-        jLabel31.setText("course code");
+        jLabel31.setText("Course Code");
 
-        jLabel32.setText("instructor id");
+        jLabel32.setText("Instructor ID");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -395,8 +398,8 @@ public class addStudent extends javax.swing.JFrame {
         String instructor_id5=instructor5.getText();
         String instructor_id6=instructor6.getText();
         String instructor_id7=instructor7.getText();
-         sql="insert into student(student_Fname,student_Mname,student_lname,student_gpa,course1,course2,course3,course4,course5,course6,course7) values ('"+fname+"','"+mname+"','"+lname+"',0,'"+course1+"','"+course2+"','"+course3+"','"+course4+"','"+course5+"','"+course6+"','"+course7+"')";
-        stat.executeUpdate(sql);
+        sql="insert into student(student_Fname,student_Mname,student_lname,student_gpa,course1,course2,course3,course4,course5,course6,course7) values ('"+fname+"','"+mname+"','"+lname+"',0,'"+course1+"','"+course2+"','"+course3+"','"+course4+"','"+course5+"','"+course6+"','"+course7+"')";
+        int result = stat.executeUpdate(sql);
         sql="select student_ID from student where student_Fname = '"+fname+"' and student_Mname = '"+mname+"' and student_lname = '"+lname+"' ";
         ResultSet ra = stat.executeQuery(sql);
         ra.next();
@@ -417,6 +420,9 @@ public class addStudent extends javax.swing.JFrame {
         stat.executeUpdate(sql);
         sql="insert into "+course7+" (studentId ,instructorID) values ("+id+","+instructor_id7+")";
         stat.executeUpdate(sql);
+        if (result == 1){
+            JOptionPane.showMessageDialog(null, "Student account has been created successfully","Success",JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {

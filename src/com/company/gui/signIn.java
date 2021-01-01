@@ -4,7 +4,11 @@ package com.company.gui;
 import javafx.util.Pair;
 
 import javax.swing.*;
-import java.sql.*;
+import java.awt.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 
 public class signIn extends javax.swing.JFrame {
@@ -22,6 +26,8 @@ public class signIn extends javax.swing.JFrame {
     }
     public signIn() {
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
 
 
@@ -38,11 +44,11 @@ public class signIn extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("your id");
+        jLabel1.setText("ID");
 
-        jLabel2.setText("password");
+        jLabel2.setText("Password");
 
-        sign_in.setText("sign in");
+        sign_in.setText("Sign In");
         sign_in.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sign_inActionPerformed(evt);
@@ -50,7 +56,7 @@ public class signIn extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("sign in ");
+        jLabel3.setText("Sign In");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,6 +99,7 @@ public class signIn extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
 
     private void sign_inActionPerformed(java.awt.event.ActionEvent evt) {
         Student s = new Student();
@@ -148,10 +155,7 @@ public class signIn extends javax.swing.JFrame {
 
     public static void main(String args[]) {
 
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -169,7 +173,6 @@ public class signIn extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(signIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

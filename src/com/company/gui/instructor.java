@@ -3,6 +3,7 @@ package com.company.gui;
 
 
 import javax.swing.*;
+import java.awt.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -23,11 +24,15 @@ public class instructor extends javax.swing.JFrame {
     }
     public instructor() {
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
 
     public instructor(int id) {
         this.id = id;
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
 
     public void setID(int id){
@@ -58,7 +63,7 @@ public class instructor extends javax.swing.JFrame {
 
         jButton2.setText("Publish");
 
-        jLabel2.setText("publish grades");
+        jLabel2.setText("Publish Grades");
 
         jLabel3.setText("INSTRUCTOR");
 
@@ -105,18 +110,14 @@ public class instructor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        AddGrade m = new AddGrade();
+        addGrade m = new addGrade();
         m.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

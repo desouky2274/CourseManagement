@@ -1,25 +1,39 @@
 
 package com.company.gui;
 
-public class AddGrade extends javax.swing.JFrame {
+import javax.swing.*;
+import java.awt.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
+public class addGrade extends javax.swing.JFrame {
 
-    public AddGrade() {
+    public static Connection con;
+    public static Statement stat;
+    static {
+        try {
+            con = Connection1.getCon();
+            stat = con.createStatement();
+        }catch (SQLException ex){
+            JOptionPane.showMessageDialog(null,"SQL connection not found","Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    public addGrade() {
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
 
-
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();//For StudentID
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jTextField2 = new javax.swing.JTextField();//For CourseCode
+        jComboBox1 = new javax.swing.JComboBox<>();//ComboBox for selecting a type of grade will be updated
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();//For Grade
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -44,6 +58,16 @@ public class AddGrade extends javax.swing.JFrame {
         jLabel3.setText("Grade");
 
         jButton1.setText("OK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                    jButton1ActionPerformed(evt);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+            }
+        }
+        );
 
         jButton2.setText("BACK");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -52,7 +76,7 @@ public class AddGrade extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("kind of grade");
+        jLabel4.setText("Type of Grade");
 
         jLabel5.setText("ADD GRADE");
 
@@ -121,9 +145,26 @@ public class AddGrade extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//Action done after pressing OK button meant to update the grades of certain student
+        try {
+
+            int id = Integer.parseInt(jTextField1.getText());
+            String courseCode = jTextField2.getText();
+            String gradeType = jComboBox1.getSelectedItem().toString();
+            int grade = Integer.parseInt(jTextField3.getText());
+            String sql = "UPDATE " + courseCode + " SET " + gradeType.toLowerCase()+" = "+ grade + " WHERE studentId = " + id;
+            int Result = stat.executeUpdate(sql);
+            if (Result == 1) {
+                JOptionPane.showMessageDialog(null, "Grade has been updated","Success",JOptionPane.INFORMATION_MESSAGE);
+            }
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//Action done after pressing Back button meant to return Back to Instructor Main Page
         instructor m = new instructor();
         m.setVisible(true);
         dispose();
@@ -137,7 +178,7 @@ public class AddGrade extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddGrade().setVisible(true);
+                new addGrade().setVisible(true);
             }
         });
     }

@@ -6,6 +6,7 @@
 package com.company.gui;
 
 import javax.swing.*;
+import java.awt.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -26,6 +27,8 @@ public class deleteAdmin extends javax.swing.JFrame {
     }
     public deleteAdmin() {
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
 
 
@@ -44,7 +47,7 @@ public class deleteAdmin extends javax.swing.JFrame {
 
         jLabel1.setText("DELETE ADMIN");
 
-        jLabel3.setText("admin id");
+        jLabel3.setText("Admin ID");
 
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -53,7 +56,7 @@ public class deleteAdmin extends javax.swing.JFrame {
             }
         });
 
-        ok.setText("ok");
+        ok.setText("OK");
         ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 okActionPerformed(evt);
@@ -123,7 +126,7 @@ public class deleteAdmin extends javax.swing.JFrame {
             int result = stat.executeUpdate(sql);
             if(result ==1)
             {
-                JOptionPane.showMessageDialog(null,"Record has been deleted successfully","Success",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Admin account has been deleted successfully","Success",JOptionPane.INFORMATION_MESSAGE);
             }
         }catch (SQLException ex)
         {

@@ -1,6 +1,7 @@
 package com.company.gui;
 
 import javax.swing.*;
+import java.awt.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,6 +21,8 @@ public class deleteInstructor extends javax.swing.JFrame {
     }
     public deleteInstructor() {
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
 
     private void initComponents() {
@@ -34,7 +37,7 @@ public class deleteInstructor extends javax.swing.JFrame {
 
         jLabel1.setText("DELETE INSTRUCTOR");
 
-        jLabel3.setText(" Instructor ID");
+        jLabel3.setText("Instructor ID");
 
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +113,7 @@ public class deleteInstructor extends javax.swing.JFrame {
             sql = "delete from allpassword where id=" + id;
             int result = stat.executeUpdate(sql);
             if(result ==1) {
-                JOptionPane.showMessageDialog(null,"Record has been Deleted successfully","Success",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,"instructor account has been Deleted successfully","Success",JOptionPane.INFORMATION_MESSAGE);
             }
         }catch (SQLException ex){
             ex.printStackTrace();
