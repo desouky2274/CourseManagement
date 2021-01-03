@@ -1,25 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.company.gui;
 
 import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
 
-/**
- *
- * @author USER
- */
 public class addAdmin extends javax.swing.JFrame {
 
     public  static Connection con;
     public static Statement stat;
     static {
         try {
-            con = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-QA5TUAT:1433;databaseName=courseManegmentSystem;user=omar;password=admin");
+            con = Connection1.getCon();
             stat = con.createStatement();
         } catch (SQLException ex)
         {
@@ -31,7 +22,6 @@ public class addAdmin extends javax.swing.JFrame {
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -158,19 +148,15 @@ public class addAdmin extends javax.swing.JFrame {
             String lname = lastname.getText();
             String pass = password.getText();
             String sql = "insert into allAdmin(admin_Fname,admin_Mname,admin_lname) values ('"+fname+"','"+mname+"','"+lname+"')";
-            System.out.println(1);
             stat.executeUpdate(sql);
-            System.out.println(2);
             sql = "select admin_id from allAdmin where admin_Fname = '" + fname + "' and admin_Mname = '" + mname + "' and admin_lname = '" + lname + "' ";
             ResultSet rc = stat.executeQuery(sql);
             rc.next();
             int id = rc.getInt("admin_ID");
-            System.out.println(3);
             sql = "insert into allpassword(id,pass,person)values('" + id + "','" + pass + "','admin')";
             int result = stat.executeUpdate(sql);
-            if (result == 1) {
+            if (result == 1)
                 JOptionPane.showMessageDialog(null, "Admin account has been created successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-            }
         }catch (SQLException ex){
             ex.printStackTrace();
         }
@@ -185,7 +171,6 @@ public class addAdmin extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField firstname;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -197,5 +182,4 @@ public class addAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField midlename;
     private javax.swing.JButton ok;
     private javax.swing.JPasswordField password;
-    // End of variables declaration//GEN-END:variables
 }

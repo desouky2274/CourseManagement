@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
 public class addCourse extends javax.swing.JFrame {
 
     public  static Connection con;
@@ -15,7 +14,7 @@ public class addCourse extends javax.swing.JFrame {
     public static int id;
     static {
         try {
-            con = Connection1.getCon();//DriverManager.getConnection("jdbc:sqlserver://DESKTOP-QA5TUAT:1433;databaseName=courseManegmentSystem;user=omar;password=admin");
+            con = Connection1.getCon();
             stat = con.createStatement();
         } catch (SQLException ex)
         {
@@ -33,7 +32,6 @@ public class addCourse extends javax.swing.JFrame {
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -95,52 +93,40 @@ public class addCourse extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
             try {
-            String []course = new String[7];
-            int student_id = id;
-            String sql = "select course1,course2,course3,course4,course5,course6,course7 from student where student_ID ="+student_id;
-            ResultSet rs = stat.executeQuery(sql);
+                String []course = new String[7];
+                int student_id = id;
+                String sql = "select course1,course2,course3,course4,course5,course6,course7 from student where student_ID ="+student_id;// Put all the courses that this student has already assigned in a array of courses
+                ResultSet rs = stat.executeQuery(sql);
                 rs.next();
                 for(int x=0; x<7; x++){
-                    if( ( rs.getString("course"+(x+1))) == null)
-                    {
-                        course[x] = rs.getString("course"+(x+1));
-                        System.out.println(course[x]);
-                        String q="course"+(x+1);
-                        sql = "UPDATE student  SET "+q+" = '"+CourseCode.getText() +"' where student_id = "+student_id;
-                        int r1 = stat.executeUpdate(sql);
-                        sql = "INSERT INTO "+CourseCode.getText()+" (studentId) values ("+student_id+")";
-                        int r2 = stat.executeUpdate(sql);
-                        if (r2 + r1 == 2)
+                        if( ( rs.getString("course"+(x+1))) == null)
                         {
-                            JOptionPane.showMessageDialog(null, "Record has been inserted successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                            course[x] = rs.getString("course"+(x+1));
+                            String q="course"+(x+1);
+                            sql = "UPDATE student  SET "+q+" = '"+CourseCode.getText() +"' where student_id = "+student_id;
+                            int r1 = stat.executeUpdate(sql);
+                            sql = "INSERT INTO "+CourseCode.getText()+" (studentId) values ("+student_id+")";
+                            int r2 = stat.executeUpdate(sql);
+                            if (r2 + r1 == 2)
+                                JOptionPane.showMessageDialog(null, "Record has been inserted successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                            break;
                         }
-                        break;
                     }
-                }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
-
-
-
     }
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
              UpdateInfo i = new UpdateInfo(id);
              i.setVisible(true);
              dispose();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
+    }
 
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -157,9 +143,7 @@ public class addCourse extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(addCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new addCourse().setVisible(true);

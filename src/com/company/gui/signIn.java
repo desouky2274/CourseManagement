@@ -1,4 +1,3 @@
-
 package com.company.gui;
 
 import javafx.util.Pair;
@@ -10,14 +9,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
 public class signIn extends javax.swing.JFrame {
 
     public  static Connection con;
     public static Statement stat;
     static {
         try {
-            con = Connection1.getCon();//DriverManager.getConnection("jdbc:sqlserver://DESKTOP-QA5TUAT:1433;databaseName=courseManegmentSystem;user=omar;password=admin");
+            con = Connection1.getCon();
             stat = con.createStatement();
         } catch (SQLException ex)
         {
@@ -29,7 +27,6 @@ public class signIn extends javax.swing.JFrame {
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -55,7 +52,7 @@ public class signIn extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel3.setText("Sign In");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -100,19 +97,16 @@ public class signIn extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
     private void sign_inActionPerformed(java.awt.event.ActionEvent evt) {
         Student s = new Student();
         admin a = new admin();
         instructor i = new instructor();
         int id1 = Integer.parseInt( id.getText());
-            String pass = password.getText();
-            Pair <Integer, String> user = Login(id1,pass);
-         if (user.getValue() == null){
+        String pass = password.getText();
+        Pair <Integer, String> user = Login(id1,pass);
+         if (user.getValue() == null)
              JOptionPane.showMessageDialog(null,"Wrong username or password");
-         }
-         else if (user.getValue().equals("student"))
-        {
+         else if (user.getValue().equals("student")) {
             s.setID(user.getKey());
             s.setVisible(true);
             dispose();
@@ -133,7 +127,7 @@ public class signIn extends javax.swing.JFrame {
         int id = ido;
         String password = p;
         try {
-            String sql = "select* from allPassword";//get all passwords from the DataBase to check if the entered password is correct
+            String sql = "select* from allPassword"; //get all passwords from the DataBase to check if the entered password is correct
             ResultSet rs = stat.executeQuery(sql);
             while (rs.next()) {
                 int id1 = rs.getInt("id");
@@ -155,14 +149,13 @@ public class signIn extends javax.swing.JFrame {
 
     public static void main(String args[]) {
 
-
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
+                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                        if ("Nimbus".equals(info.getName())) {
+                            javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                            break;
+                        }
+                    }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(signIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -172,7 +165,6 @@ public class signIn extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(signIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -181,12 +173,10 @@ public class signIn extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField id;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPasswordField password;
     private javax.swing.JButton sign_in;
-    // End of variables declaration//GEN-END:variables
 }

@@ -1,4 +1,3 @@
-
 package com.company.gui;
 
 import javax.swing.*;
@@ -11,7 +10,7 @@ public class addInstructor extends javax.swing.JFrame {
     public static Statement stat;
     static {
         try {
-            con = Connection1.getCon();//DriverManager.getConnection("jdbc:sqlserver://DESKTOP-QA5TUAT:1433;databaseName=courseManegmentSystem;user=omar;password=admin");
+            con = Connection1.getCon();
             stat = con.createStatement();
         } catch (SQLException ex)
         {
@@ -208,13 +207,13 @@ public class addInstructor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         adminPage m = new adminPage();
          m.setVisible(true);
          dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }
 
-    private void okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okActionPerformed
+    private void okActionPerformed(java.awt.event.ActionEvent evt) {
         try {
             String sql;
             String fname = firstname.getText();
@@ -252,11 +251,9 @@ public class addInstructor extends javax.swing.JFrame {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-    }//GEN-LAST:event_okActionPerformed
-
+    }
 
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -278,8 +275,6 @@ public class addInstructor extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(addInstructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new addInstructor().setVisible(true);
@@ -287,7 +282,6 @@ public class addInstructor extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Course1;
     private javax.swing.JTextField Course2;
     private javax.swing.JTextField Course3;
@@ -311,5 +305,4 @@ public class addInstructor extends javax.swing.JFrame {
     private javax.swing.JTextField midlename;
     private javax.swing.JButton ok;
     private javax.swing.JPasswordField password;
-    // End of variables declaration//GEN-END:variables
 }

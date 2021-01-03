@@ -1,11 +1,9 @@
-
 package com.company.gui;
 
 import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
 import java.util.ArrayList;
-
 
 public class addStudent extends javax.swing.JFrame {
 
@@ -17,7 +15,7 @@ public class addStudent extends javax.swing.JFrame {
     public static String St_ln;
     static {
         try {
-            con = Connection1.getCon();//DriverManager.getConnection("jdbc:sqlserver://DESKTOP-QA5TUAT:1433;databaseName=courseManegmentSystem;user=omar;password=admin");
+            con = Connection1.getCon();
             stat = con.createStatement();
         } catch (SQLException ex)
         {
@@ -32,7 +30,6 @@ public class addStudent extends javax.swing.JFrame {
 
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
@@ -363,16 +360,14 @@ public class addStudent extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         admin m = new admin();
          m.setVisible(true);
          dispose();// TODO add your handling code here:
     }
-
     private void firstnameActionPerformed(java.awt.event.ActionEvent evt) {
-
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {

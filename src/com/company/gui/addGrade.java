@@ -1,4 +1,3 @@
-
 package com.company.gui;
 
 import javax.swing.*;
@@ -143,22 +142,19 @@ public class addGrade extends javax.swing.JFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(85, 85, 85))
         );
-
         pack();
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//Action done after pressing OK button meant to update the grades of certain student
         try {
-
             int id = Integer.parseInt(jTextField1.getText());
             String courseCode = jTextField2.getText();
             String gradeType = jComboBox1.getSelectedItem().toString();
             int grade = Integer.parseInt(jTextField3.getText());
             String sql = "UPDATE " + courseCode + " SET " + gradeType.toLowerCase()+" = "+ grade + " WHERE studentId = " + id;
             int Result = stat.executeUpdate(sql);
-            if (Result == 1) {
+            if (Result == 1)
                 JOptionPane.showMessageDialog(null, "Grade has been updated","Success",JOptionPane.INFORMATION_MESSAGE);
-            }
         }catch (SQLException ex){
             ex.printStackTrace();
         }
@@ -169,10 +165,9 @@ public class addGrade extends javax.swing.JFrame {
         m.setVisible(true);
         dispose();
     }
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {
 
     }
-
 
     public static void main(String args[]) {
 
@@ -182,7 +177,6 @@ public class addGrade extends javax.swing.JFrame {
             }
         });
     }
-
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
