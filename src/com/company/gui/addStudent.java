@@ -365,7 +365,7 @@ public class addStudent extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         admin m = new admin();
          m.setVisible(true);
-         dispose();// TODO add your handling code here:
+         dispose();
     }
     private void firstnameActionPerformed(java.awt.event.ActionEvent evt) {
     }

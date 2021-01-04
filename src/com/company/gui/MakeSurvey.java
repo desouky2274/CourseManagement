@@ -10,11 +10,11 @@ public class MakeSurvey extends javax.swing.JFrame {
 
     public  static Connection con;
     public static Statement stat;
-    public static int id;//ID of the student
+    public static int id;//Student ID
 
     static {
         try {
-            con = Connection1.getCon();//con = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-QA5TUAT:1433;databaseName=courseManegmentSystem;user=omar;password=admin");
+            con = Connection1.getCon();
             stat = con.createStatement();
         } catch (SQLException ex)
         {
@@ -23,7 +23,7 @@ public class MakeSurvey extends javax.swing.JFrame {
     }
     public MakeSurvey() {
         initComponents();
-        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();//Make the window at the center of the screen
         this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
 
@@ -35,7 +35,6 @@ public class MakeSurvey extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         buttonGroup = new javax.swing.ButtonGroup();
@@ -151,9 +150,9 @@ public class MakeSurvey extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
             Student s = new Student();
              s.setVisible(true);
             dispose();
@@ -163,16 +162,14 @@ public class MakeSurvey extends javax.swing.JFrame {
          try {
             String[] course = new String[7];
             int student_id = id;
-            String sql = "select course1,course2,course3,course4,course5,course6,course7 from student where student_id =" + student_id;
+            String sql = "select course1,course2,course3,course4,course5,course6,course7 from student where student_id =" + student_id;//Selecting all courses that Student had assigned
             ResultSet rs = stat.executeQuery(sql);
             rs.next();
-            for (int x = 0; x < 7; x++) {
+            for (int x = 0; x < 7; x++) {//Putting these courses in an array
                 if (rs.getString("course" + (x + 1)) != null)
                 course[x] = rs.getString("course" + (x + 1));
             }
-             System.out.println(course[0]);
-
-        DefaultComboBoxModel mod = new DefaultComboBoxModel(course);
+        DefaultComboBoxModel mod = new DefaultComboBoxModel(course);//Make new ComboBox to prevent adding same courses again
         select_course.setModel(mod);
     }
     catch (SQLException e) {
@@ -180,52 +177,40 @@ public class MakeSurvey extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
        String survey =null;
        String sql;
        if(Excellent.isSelected())
-    {
         survey="Excellent";
-    }
-    else if(Good.isSelected())
-    {
-        survey="Good";
-    }
-    else if(Avarage.isSelected())
-    {
-        survey="Avarage";
-    }
-    else if(poor.isSelected())
-    {
-        survey="poor";
-    }
-    else if(Very_poor.isSelected())
-    {
-        survey="Very_poor";
-    }
-    if (survey != null)
-    {
-        try {
 
+    else if(Good.isSelected())
+        survey="Good";
+
+    else if(Avarage.isSelected())
+        survey="Avarage";
+
+    else if(poor.isSelected())
+        survey="poor";
+
+    else if(Very_poor.isSelected())
+        survey="Very_poor";
+
+    if (survey != null) {
+        try {
             sql = "UPDATE " + select_course.getSelectedItem() + " SET survey = '" + survey + "' WHERE studentId = " + id;
             int result = stat.executeUpdate(sql);
-            if (result == 1){
+            if (result == 1)
                 JOptionPane.showMessageDialog(null,"Thanks for filling this survey","Success",JOptionPane.INFORMATION_MESSAGE);
-            }
         }catch (SQLException ex){
             ex.printStackTrace();
         }
     }
-
     }
 
-    private void ExcellentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcellentActionPerformed
-
+    private void ExcellentActionPerformed(java.awt.event.ActionEvent evt) {
     }
 
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -248,15 +233,12 @@ public class MakeSurvey extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MakeSurvey().setVisible(true);
             }
         });
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton Avarage;
     private javax.swing.JRadioButton Excellent;
     private javax.swing.JRadioButton Good;
@@ -267,5 +249,4 @@ public class MakeSurvey extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JRadioButton poor;
     private javax.swing.JComboBox<String> select_course;
-    // End of variables declaration//GEN-END:variables
 }

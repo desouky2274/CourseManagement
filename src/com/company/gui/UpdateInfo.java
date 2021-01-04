@@ -92,7 +92,7 @@ public class UpdateInfo extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         addCourse a = new addCourse(id);
@@ -102,7 +102,7 @@ public class UpdateInfo extends javax.swing.JFrame {
     }
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
-            NewPassword p = new NewPassword();
+            NewPassword p = new NewPassword(id);
             p.setVisible(true);
             dispose();
            

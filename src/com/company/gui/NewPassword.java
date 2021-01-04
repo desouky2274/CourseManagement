@@ -1,23 +1,36 @@
 package  com.company.gui;
 
+import javax.swing.*;
 import java.awt.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-/**
- *
- * @author desouky
- */
 public class NewPassword extends javax.swing.JFrame {
-
+    public  static Connection con;
+    public static Statement stat;
+    public static int id;
+    static {
+        try {
+            con = Connection1.getCon();
+            stat = con.createStatement();
+        }catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"SQL connection not found","Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
     public NewPassword() {
         initComponents();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
-
-
+    public NewPassword(int id) {
+        initComponents();
+        this.id = id;
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
+    }
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
@@ -34,6 +47,11 @@ public class NewPassword extends javax.swing.JFrame {
         jLabel2.setText("Confirm New Password");
 
         jButton1.setText("Submit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -83,19 +101,29 @@ public class NewPassword extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addContainerGap(24, Short.MAX_VALUE))
         );
-
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        try {
+            if (jPasswordField1.getText().equals( jPasswordField2.getText())) {
+                String sql = "UPDATE allPassword SET pass = '" + jPasswordField1.getText()+"' WHERE id = "+id;
+                int result = stat.executeUpdate(sql);
+                if (result == 1){
+                    JOptionPane.showMessageDialog(null,"Password has been changed successfully","Success",JOptionPane.INFORMATION_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Two Passwords don't match ", "Failed", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+    }
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-            UpdateInfo i = new UpdateInfo();
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+            UpdateInfo i = new UpdateInfo(id);
             i.setVisible(true);
             dispose();
     }
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
 
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -119,21 +147,16 @@ public class NewPassword extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(NewPassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new NewPassword().setVisible(true);
             }
         });
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField jPasswordField2;
-    // End of variables declaration//GEN-END:variables
 }
