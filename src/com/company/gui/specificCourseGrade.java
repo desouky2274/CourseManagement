@@ -97,11 +97,7 @@ public class specificCourseGrade extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) throws SQLException {//GEN-FIRST:event_formWindowOpened
 
         try {
-            String[] course = new String[7];
-            int student_id = 10001;
-            if (courseCode.equals("pl221"))
-                courseCode = "pl2";
-            String sql = "select total from "+courseCode+" where studentId =" + student_id ;
+            String sql = "select total from "+courseCode+" where studentId =" + id ;
             ResultSet rs = stat.executeQuery(sql);
             rs.next();
             jLabel3.setText(rs.getString("total"));
