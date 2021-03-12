@@ -171,6 +171,7 @@ public class makeSurvey extends javax.swing.JFrame {
             }
         DefaultComboBoxModel mod = new DefaultComboBoxModel(course);//Make new ComboBox to prevent adding same courses again
         select_course.setModel(mod);
+
     }
     catch (SQLException e) {
             System.out.println("oops");
