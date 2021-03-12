@@ -21,6 +21,7 @@ public class addAdmin extends javax.swing.JFrame {
         initComponents();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
+        setResizable(false);
     }
 
     @SuppressWarnings("unchecked")
