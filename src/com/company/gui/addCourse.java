@@ -120,7 +120,7 @@ public class addCourse extends javax.swing.JFrame {
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-             UpdateInfo i = new UpdateInfo(id);
+             updateInfo i = new updateInfo(id);
              i.setVisible(true);
              dispose();
     }

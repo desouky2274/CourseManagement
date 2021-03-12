@@ -6,7 +6,7 @@ import java.sql.*;
 
 
 
-public class MakeSurvey extends javax.swing.JFrame {
+public class makeSurvey extends javax.swing.JFrame {
 
     public  static Connection con;
     public static Statement stat;
@@ -21,13 +21,13 @@ public class MakeSurvey extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"SQL connection not found","Error",JOptionPane.ERROR_MESSAGE);
         }
     }
-    public MakeSurvey() {
+    public makeSurvey() {
         initComponents();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();//Make the window at the center of the screen
         this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
     }
 
-    public MakeSurvey(int id) {
+    public makeSurvey(int id) {
         this.id = id;
         initComponents();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
@@ -201,6 +201,7 @@ public class MakeSurvey extends javax.swing.JFrame {
             int result = stat.executeUpdate(sql);
             if (result == 1)
                 JOptionPane.showMessageDialog(null,"Thanks for filling this survey","Success",JOptionPane.INFORMATION_MESSAGE);
+            System.out.println("done for now");
         }catch (SQLException ex){
             ex.printStackTrace();
         }
@@ -223,19 +224,19 @@ public class MakeSurvey extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MakeSurvey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(makeSurvey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MakeSurvey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(makeSurvey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MakeSurvey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(makeSurvey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MakeSurvey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(makeSurvey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MakeSurvey().setVisible(true);
+                new makeSurvey().setVisible(true);
             }
         });
     }

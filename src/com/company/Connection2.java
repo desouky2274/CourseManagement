@@ -1,4 +1,4 @@
-package com.company.gui;
+package com.company;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
-public  class Connection1 {
+public  class Connection2 {
     public  static Connection con;
     public static Statement stat;
     static {
         try {
-            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=courseManegmentSystem;user=omar415;password=omar");
+            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=courseManegmentSystem;user=omar;password=admin");
             stat = con.createStatement();
         } catch (SQLException ex)
         {

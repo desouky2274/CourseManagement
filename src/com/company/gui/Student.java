@@ -60,7 +60,12 @@ public class Student extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Back");
+        jButton4.setText("Sign out");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,13 +108,13 @@ public class Student extends javax.swing.JFrame {
     }
 
     private void ShowAllCoursesActionPerformed(java.awt.event.ActionEvent evt) {
-        AllCourses m = new AllCourses(id);
+        allCourses m = new allCourses(id);
         m.setVisible(true);
         dispose();
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        UpdateInfo m = new UpdateInfo(id);
+        updateInfo m = new updateInfo(id);
         m.setVisible(true);
         dispose();
     }
@@ -122,9 +127,15 @@ public class Student extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
 
-        MakeSurvey m = new MakeSurvey(id);
+        makeSurvey m = new makeSurvey(id);
          m.setVisible(true);
          dispose();
+    }
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
+        SignIn m = new SignIn();
+        m.setVisible(true);
+        dispose();
     }
 
     
