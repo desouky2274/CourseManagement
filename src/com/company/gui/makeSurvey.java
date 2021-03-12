@@ -25,6 +25,7 @@ public class makeSurvey extends javax.swing.JFrame {
         initComponents();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();//Make the window at the center of the screen
         this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
+        setResizable(false);
     }
 
     public makeSurvey(int id) {
@@ -32,6 +33,7 @@ public class makeSurvey extends javax.swing.JFrame {
         initComponents();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
+        setResizable(false);
     }
 
     @SuppressWarnings("unchecked")
