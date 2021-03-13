@@ -32,8 +32,6 @@ public class SignIn extends javax.swing.JFrame {
 
 
 
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
@@ -44,6 +42,7 @@ public class SignIn extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
 
         jLabel1.setText("ID");
 
@@ -100,6 +99,8 @@ public class SignIn extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+
 
     private void sign_inActionPerformed(java.awt.event.ActionEvent evt) {
         Student s = new Student();

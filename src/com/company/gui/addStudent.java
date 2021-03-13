@@ -2,8 +2,12 @@ package com.company.gui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 public class addStudent extends javax.swing.JFrame {
 
@@ -72,6 +76,7 @@ public class addStudent extends javax.swing.JFrame {
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         instructor7 = new javax.swing.JTextField();
+        none = new javax.swing.JComboBox<>();
         Course1 = new javax.swing.JComboBox<>();
         Course2 = new javax.swing.JComboBox<>();
         Course3 = new javax.swing.JComboBox<>();
@@ -387,6 +392,15 @@ public class addStudent extends javax.swing.JFrame {
         String course5=(String) Course5.getSelectedItem();
         String course6=(String) Course6.getSelectedItem();
         String course7=(String) Course7.getSelectedItem();
+        List <String> d = new ArrayList<>();
+        String[] courses = new String[7];
+        d.add(course1);
+        d.add(course2);
+        d.add(course3);
+        d.add(course4);
+        d.add(course5);
+        d.add(course6);
+        d.add(course7);
         String instructor_id1=instructor1.getText();
         String instructor_id2=instructor2.getText();
         String instructor_id3=instructor3.getText();
@@ -394,7 +408,26 @@ public class addStudent extends javax.swing.JFrame {
         String instructor_id5=instructor5.getText();
         String instructor_id6=instructor6.getText();
         String instructor_id7=instructor7.getText();
-        sql="insert into student(student_Fname,student_Mname,student_lname,student_gpa,course1,course2,course3,course4,course5,course6,course7) values ('"+fname+"','"+mname+"','"+lname+"',0,'"+course1+"','"+course2+"','"+course3+"','"+course4+"','"+course5+"','"+course6+"','"+course7+"')";
+        sql="insert into student(student_Fname,student_Mname,student_lname,student_gpa,course1,course2,course3,course4,course5,course6,course7) values ('"+fname
+                +"','"
+                +mname//First Name
+                +"','"
+                +lname//last Name
+                +"',0,'"//GPA
+                +course1
+                +"','"
+                +course2
+                +"','"
+                +course3
+                +"','"
+                +course4
+                +"','"
+                +course5
+                +"','"
+                +course6
+                +"','"
+                +course7
+                +"')";
         int result = stat.executeUpdate(sql);
         sql="select student_ID from student where student_Fname = '"+fname+"' and student_Mname = '"+mname+"' and student_lname = '"+lname+"' ";
         ResultSet ra = stat.executeQuery(sql);
@@ -402,20 +435,34 @@ public class addStudent extends javax.swing.JFrame {
         id = ra.getInt("student_ID");
         sql = "insert into allPassword (id,pass,person) values ("+id+",'"+pass+"','student')";
         stat.executeUpdate(sql);
-        sql="insert into "+course1+" (studentId ,instructorID) values ("+id+","+instructor_id1+")";
-        stat.executeUpdate(sql);
-        sql="insert into "+course2+" (studentId ,instructorID) values ('"+id+"',"+instructor_id2+")";
-        stat.executeUpdate(sql);
-        sql="insert into "+course3+" (studentId ,instructorID) values ("+id+","+instructor_id3+")";
-        stat.executeUpdate(sql);
-        sql="insert into "+course4+" (studentId ,instructorID) values ("+id+","+instructor_id4+")";
-        stat.executeUpdate(sql);
-        sql="insert into "+course5+" (studentId ,instructorID) values ("+id+","+instructor_id5+")";
-        stat.executeUpdate(sql);
-        sql="insert into "+course6+" (studentId ,instructorID) values ("+id+","+instructor_id6+")";
-        stat.executeUpdate(sql);
-        sql="insert into "+course7+" (studentId ,instructorID) values ("+id+","+instructor_id7+")";
-        stat.executeUpdate(sql);
+        if(!course1.equals("null")) {
+            sql = "insert into " + course1 + " (studentId ,instructorID) values (" + id + "," + instructor_id1 + ")";
+            stat.executeUpdate(sql);
+        }
+        if(!course2.equals("null")) {
+            sql = "insert into " + course2 + " (studentId ,instructorID) values ('" + id + "'," + instructor_id2 + ")";
+            stat.executeUpdate(sql);
+        }
+        if(!course3.equals("null")) {
+            sql = "insert into " + course3 + " (studentId ,instructorID) values (" + id + "," + instructor_id3 + ")";
+            stat.executeUpdate(sql);
+        }
+        if(!course4.equals("null")) {
+            sql = "insert into " + course4 + " (studentId ,instructorID) values (" + id + "," + instructor_id4 + ")";
+            stat.executeUpdate(sql);
+        }
+        if(!course5.equals("null")) {
+            sql = "insert into " + course5 + " (studentId ,instructorID) values (" + id + "," + instructor_id5 + ")";
+            stat.executeUpdate(sql);
+        }
+        if(!course6.equals("null")) {
+            sql = "insert into " + course6 + " (studentId ,instructorID) values (" + id + "," + instructor_id6 + ")";
+            stat.executeUpdate(sql);
+        }
+        if(!course7.equals("null")) {
+            sql = "insert into " + course7 + " (studentId ,instructorID) values (" + id + "," + instructor_id7 + ")";
+            stat.executeUpdate(sql);
+        }
         if (result == 1){
             JOptionPane.showMessageDialog(null, "Student account has been created successfully","Success",JOptionPane.INFORMATION_MESSAGE);
         }
@@ -428,6 +475,7 @@ public class addStudent extends javax.swing.JFrame {
              sql = "select courseCode from course";
              ResultSet ra = stat.executeQuery(sql);
              ArrayList <String> course = new ArrayList<>();
+             course.add("null");
              while (ra.next())
              {
                  course.add(ra.getString("courseCode"));
@@ -489,7 +537,7 @@ public class addStudent extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> none;
     private javax.swing.JComboBox<String> Course1;
     private javax.swing.JComboBox<String> Course2;
     private javax.swing.JComboBox<String> Course3;
