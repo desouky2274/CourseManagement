@@ -83,6 +83,8 @@ public class addStudent extends javax.swing.JFrame {
         Course6 = new javax.swing.JComboBox<>();
         Course7 = new javax.swing.JComboBox<>();
 
+
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
