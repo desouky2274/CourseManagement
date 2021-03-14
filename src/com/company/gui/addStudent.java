@@ -34,13 +34,12 @@ public class addStudent extends javax.swing.JFrame {
     }
 
 
-    @SuppressWarnings("unchecked")
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        JLabel jLabel1 = new JLabel();
+        JLabel jLabel2 = new JLabel();
+        JLabel jLabel3 = new JLabel();
+        JLabel jLabel4 = new JLabel();
         firstname = new javax.swing.JTextField();
         midlename = new javax.swing.JTextField();
         lastname = new javax.swing.JTextField();
@@ -72,11 +71,10 @@ public class addStudent extends javax.swing.JFrame {
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         instructor6 = new javax.swing.JTextField();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
+        JLabel jLabel30 = new JLabel();
+        JLabel jLabel31 = new JLabel();
+        JLabel jLabel32 = new JLabel();
         instructor7 = new javax.swing.JTextField();
-        none = new javax.swing.JComboBox<>();
         Course1 = new javax.swing.JComboBox<>();
         Course2 = new javax.swing.JComboBox<>();
         Course3 = new javax.swing.JComboBox<>();
@@ -89,6 +87,15 @@ public class addStudent extends javax.swing.JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                try {
+                    formMouseExited(evt);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
             }
         });
 
@@ -374,6 +381,7 @@ public class addStudent extends javax.swing.JFrame {
          dispose();
     }
     private void firstnameActionPerformed(java.awt.event.ActionEvent evt) {
+
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
@@ -429,11 +437,12 @@ public class addStudent extends javax.swing.JFrame {
                 +course7
                 +"')";
         int result = stat.executeUpdate(sql);
-        sql="select student_ID from student where student_Fname = '"+fname+"' and student_Mname = '"+mname+"' and student_lname = '"+lname+"' ";
+        sql="select student_ID from student where student_Fname = '"+fname+"' and student_Mname = '"+mname+"' and student_lname = '"+lname+"' ";//Insert into student table
         ResultSet ra = stat.executeQuery(sql);
         ra.next();
+
         id = ra.getInt("student_ID");
-        sql = "insert into allPassword (id,pass,person) values ("+id+",'"+pass+"','student')";
+        sql = "insert into allPassword (id,pass,person) values ("+id+",'"+pass+"','student')";//Insert Into Password table
         stat.executeUpdate(sql);
         if(!course1.equals("null")) {
             sql = "insert into " + course1 + " (studentId ,instructorID) values (" + id + "," + instructor_id1 + ")";
@@ -476,23 +485,34 @@ public class addStudent extends javax.swing.JFrame {
              ResultSet ra = stat.executeQuery(sql);
              ArrayList <String> course = new ArrayList<>();
              course.add("null");
-             while (ra.next())
-             {
+             while (ra.next()) {
                  course.add(ra.getString("courseCode"));
              }
 
             DefaultComboBoxModel mod = new DefaultComboBoxModel(course.toArray());
             Course1.setModel(mod);
+
+           // course.remove(mod.getSelectedItem());
              DefaultComboBoxModel mod2 = new DefaultComboBoxModel(course.toArray());
             Course2.setModel(mod2);
+
+         //    course.remove(mod2.getSelectedItem());
              DefaultComboBoxModel mod3= new DefaultComboBoxModel(course.toArray());
             Course3.setModel(mod3);
+
+         //    course.remove(mod3.getSelectedItem());
              DefaultComboBoxModel mod4 = new DefaultComboBoxModel(course.toArray());
             Course4.setModel(mod4);
+
+          //   course.remove(mod4.getSelectedItem());
              DefaultComboBoxModel mod5 = new DefaultComboBoxModel(course.toArray());
             Course5.setModel(mod5);
+
+         //    course.remove(mod5.getSelectedItem());
              DefaultComboBoxModel mod6 = new DefaultComboBoxModel(course.toArray());
             Course6.setModel(mod6);
+
+          //   course.remove(mod6.getSelectedItem());
              DefaultComboBoxModel mod7 = new DefaultComboBoxModel(course.toArray());
             Course7.setModel(mod7);
     }
@@ -500,13 +520,29 @@ public class addStudent extends javax.swing.JFrame {
             System.out.println("oops");
             e.printStackTrace();
         }
-    }//GEN-LAST:event_formWindowOpened
+    }
 
-    /**
-     * @param args the command line arguments
-     */
+    private void formMouseExited(java.awt.event.MouseEvent evt) throws SQLException { // mouse action to delete multi choices
+
+
+
+        Course2.remove( Course1.getSelectedIndex());
+
+        Course3.remove(Course2.getSelectedIndex());
+
+        Course4.remove( Course3.getSelectedIndex());
+
+        Course5.remove( Course4.getSelectedIndex());
+
+        Course6.remove( Course5.getSelectedIndex());
+
+        Course7.remove( Course6.getSelectedIndex());
+
+
+    }
+
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -529,7 +565,7 @@ public class addStudent extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new addStudent().setVisible(true);
@@ -537,14 +573,13 @@ public class addStudent extends javax.swing.JFrame {
         });
     }
 
-    private javax.swing.JComboBox<String> none;
-    private javax.swing.JComboBox<String> Course1;
-    private javax.swing.JComboBox<String> Course2;
-    private javax.swing.JComboBox<String> Course3;
-    private javax.swing.JComboBox<String> Course4;
-    private javax.swing.JComboBox<String> Course5;
-    private javax.swing.JComboBox<String> Course6;
-    private javax.swing.JComboBox<String> Course7;
+    private JComboBox<String> Course1;
+    private JComboBox<String> Course2;
+    private JComboBox<String> Course3;
+    private JComboBox<String> Course4;
+    private JComboBox<String> Course5;
+    private JComboBox<String> Course6;
+    private JComboBox<String> Course7;
     private javax.swing.JTextField firstname;
     private javax.swing.JTextField instructor1;
     private javax.swing.JTextField instructor2;
@@ -553,36 +588,7 @@ public class addStudent extends javax.swing.JFrame {
     private javax.swing.JTextField instructor5;
     private javax.swing.JTextField instructor6;
     private javax.swing.JTextField instructor7;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField lastname;
     private javax.swing.JTextField midlename;
     private javax.swing.JPasswordField password;
-    // End of variables declaration//GEN-END:variables
 }
