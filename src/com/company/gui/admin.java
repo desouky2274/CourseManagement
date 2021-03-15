@@ -268,7 +268,7 @@ public class admin extends javax.swing.JFrame {
     }
 
     private void signOutActionPerformed(java.awt.event.ActionEvent evt) {
-        SignIn m = new SignIn();
+        signIn m = new signIn();
         m.setVisible(true);
         dispose();
     }

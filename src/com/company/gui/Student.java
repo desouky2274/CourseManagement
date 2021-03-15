@@ -135,7 +135,7 @@ public class Student extends javax.swing.JFrame {
     }
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
-        SignIn m = new SignIn();
+        signIn m = new signIn();
         m.setVisible(true);
         dispose();
     }

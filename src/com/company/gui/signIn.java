@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class SignIn extends javax.swing.JFrame {
+public class signIn extends javax.swing.JFrame {
 
     public  static Connection con;
     public static Statement stat;
@@ -22,7 +22,7 @@ public class SignIn extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"SQL connection not found","Error",JOptionPane.ERROR_MESSAGE);
         }
     }
-    public SignIn() {
+    public signIn() {
         initComponents();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
@@ -103,27 +103,27 @@ public class SignIn extends javax.swing.JFrame {
 
 
     private void sign_inActionPerformed(java.awt.event.ActionEvent evt) {
-        Student s = new Student();
-        admin a = new admin();
-        instructor i = new instructor();
+        Student student = new Student();
+        admin admin = new admin();
+        instructor instructor = new instructor();
         int id1 = Integer.parseInt( id.getText());
         String pass = password.getText();
         Pair <Integer, String> user = Login(id1,pass);
          if (user.getValue() == null)
              JOptionPane.showMessageDialog(null,"Wrong username or password");
          else if (user.getValue().equals("student")) {
-            s.setID(user.getKey());
-            s.setVisible(true);
+            student.setID(user.getKey());
+            student.setVisible(true);
             dispose();
         }
         else if (user.getValue().equals("admin")) {
-            a.setID(user.getKey());
-            a.setVisible(true);
+            admin.setID(user.getKey());
+            admin.setVisible(true);
             dispose();
         }
         else if (user.getValue().equals("instructor")) {
-            i.setID(user.getKey());
-            i.setVisible(true);
+            instructor.setID(user.getKey());
+            instructor.setVisible(true);
             dispose();
         }
     }
@@ -162,18 +162,18 @@ public class SignIn extends javax.swing.JFrame {
                         }
                     }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SignIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(signIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SignIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(signIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SignIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(signIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SignIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(signIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SignIn().setVisible(true);
+                new signIn().setVisible(true);
             }
         });
     }

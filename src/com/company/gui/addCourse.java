@@ -28,7 +28,7 @@ public class addCourse extends javax.swing.JFrame {
         setResizable(false);
     }
     public addCourse(int id) {
-        this.id = id;
+        addCourse.id = id;
         initComponents();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
@@ -39,10 +39,10 @@ public class addCourse extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        JLabel jLabel1 = new JLabel();
         CourseCode = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        JButton jButton1 = new JButton();
+        JButton jButton2 = new JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,6 +95,14 @@ public class addCourse extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    boolean alreadyChosen(String[] courses){
+        for (String course : courses) {
+            if (CourseCode.getText().equals(course))
+                return true;
+        }
+        return false;
+    }
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
             try {
                 String []course = new String[7];
@@ -102,22 +110,28 @@ public class addCourse extends javax.swing.JFrame {
                 String sql = "select course1,course2,course3,course4,course5,course6,course7 from student where student_ID ="+student_id;// Put all the courses that this student has already assigned in a array of courses
                 ResultSet rs = stat.executeQuery(sql);
                 rs.next();
-                for(int x=0; x<7; x++){
-                        if( ( rs.getString("course"+(x+1))) == null)
-                        {
-                            course[x] = rs.getString("course"+(x+1));
-                            String q="course"+(x+1);
-                            sql = "UPDATE student  SET "+q+" = '"+CourseCode.getText() +"' where student_id = "+student_id;
+                for (int i = 0; i < 7; i++) {
+                    course[i] = rs.getString("course"+(i+1));
+                }
+                if (alreadyChosen(course))
+                    JOptionPane.showMessageDialog(null, CourseCode.getText()+" is already selected", "failed", JOptionPane.INFORMATION_MESSAGE);
+                else {
+                    for (int x = 0; x < 7; x++) {
+                        if (course[x].equals("null")) {
+
+                            String q = "course" + (x + 1);
+                            sql = "UPDATE student  SET " + q + " = '" + CourseCode.getText() + "' where student_id = " + student_id;
                             int r1 = stat.executeUpdate(sql);
-                            sql = "INSERT INTO "+CourseCode.getText()+" (studentId) values ("+student_id+")";
+                            sql = "INSERT INTO " + CourseCode.getText() + " (studentId) values (" + student_id + ")";
                             int r2 = stat.executeUpdate(sql);
                             if (r2 + r1 == 2)
                                 JOptionPane.showMessageDialog(null, "Record has been inserted successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
                             break;
                         }
                     }
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
+                }
+            } catch (SQLException throwable) {
+                throwable.printStackTrace();
             }
     }
 
@@ -136,13 +150,7 @@ public class addCourse extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(addCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(addCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(addCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(addCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
@@ -154,7 +162,4 @@ public class addCourse extends javax.swing.JFrame {
     }
 
     private javax.swing.JTextField CourseCode;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
 }

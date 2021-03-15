@@ -115,13 +115,13 @@ public class dropCourse extends javax.swing.JFrame {
                     courseNumber = i;
                 }
             }
-             sql = "UPDATE student SET course" + courseNumber + " = null WHERE student_ID = "+id;
-            System.out.println(1);
+             sql = "UPDATE student SET course" + courseNumber + " = 'null' WHERE student_ID = "+id;
+
             int r1 = stat.executeUpdate(sql);
             sql = "DELETE FROM "+courseCode+" WHERE studentId = "+id;
-            System.out.println(2);
+
             int r2 = stat.executeUpdate(sql);
-            System.out.println(3);
+
             if (r1 + r2 == 2){
                 System.out.println(4);
                 JOptionPane.showMessageDialog(null,courseCode+" has been dropped","Success",JOptionPane.INFORMATION_MESSAGE);

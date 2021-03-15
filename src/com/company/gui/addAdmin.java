@@ -12,11 +12,11 @@ public class addAdmin extends javax.swing.JFrame {
         try {
             con = Connection1.getCon();
             stat = con.createStatement();
-        } catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"SQL connection not found","Error",JOptionPane.ERROR_MESSAGE);
         }
     }
+
     public addAdmin() {
         initComponents();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
@@ -28,17 +28,17 @@ public class addAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        JLabel jLabel3 = new JLabel();
+        JLabel jLabel11 = new JLabel();
         firstname = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        midlename = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        JLabel jLabel1 = new JLabel();
+        middlename = new javax.swing.JTextField();
+        JLabel jLabel2 = new JLabel();
         lastname = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
+        JLabel jLabel12 = new JLabel();
         password = new javax.swing.JPasswordField();
-        jButton2 = new javax.swing.JButton();
-        ok = new javax.swing.JButton();
+        JButton jButton2 = new JButton();
+        JButton ok = new JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,7 +91,7 @@ public class addAdmin extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(password)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(midlename)
+                                .addComponent(middlename)
                                 .addComponent(firstname)
                                 .addComponent(lastname, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(23, 23, 23))
@@ -114,7 +114,7 @@ public class addAdmin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(midlename, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(middlename, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
@@ -144,17 +144,21 @@ public class addAdmin extends javax.swing.JFrame {
 
     private void okActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
         try {
-            String fname = firstname.getText();
-            String mname = midlename.getText();
-            String lname = lastname.getText();
+            String firstName = firstname.getText();
+            String middleName = middlename.getText();
+            String lastName = lastname.getText();
             String pass = password.getText();
-            String sql = "insert into allAdmin(admin_Fname,admin_Mname,admin_lname) values ('"+fname+"','"+mname+"','"+lname+"')";
+
+            String sql = "insert into allAdmin(admin_Fname,admin_Mname,admin_lname) values ('"+firstName+"','"+middleName+"','"+lastName+"')";
             stat.executeUpdate(sql);
-            sql = "select admin_id from allAdmin where admin_Fname = '" + fname + "' and admin_Mname = '" + mname + "' and admin_lname = '" + lname + "' ";
+
+            sql = "select admin_id from allAdmin where admin_Fname = '" + firstName + "' and admin_Mname = '" + middleName + "' and admin_lname = '" + lastName + "' ";
             ResultSet rc = stat.executeQuery(sql);
+
             rc.next();
             int id = rc.getInt("admin_ID");
             sql = "insert into allpassword(id,pass,person)values('" + id + "','" + pass + "','admin')";
+
             int result = stat.executeUpdate(sql);
             if (result == 1)
                 JOptionPane.showMessageDialog(null, "Admin account has been created successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -173,14 +177,7 @@ public class addAdmin extends javax.swing.JFrame {
     }
 
     private javax.swing.JTextField firstname;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField lastname;
-    private javax.swing.JTextField midlename;
-    private javax.swing.JButton ok;
+    private javax.swing.JTextField middlename;
     private javax.swing.JPasswordField password;
 }
