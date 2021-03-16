@@ -594,6 +594,10 @@ public class AddStudent extends javax.swing.JFrame {
         String mname= middleName.getText();
         String lname= lastName.getText();
         String pass=password.getText();
+        if (fname.equals("") || mname.equals("") || lname.equals("") || pass.equals("")){
+            JOptionPane.showMessageDialog(null, "Empty Field", "Failed", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
         St_fn = fname;
         St_mn = mname;
         St_ln = lname;
@@ -619,11 +623,14 @@ public class AddStudent extends javax.swing.JFrame {
         String instructor_id5=instructor5.getText();
         String instructor_id6=instructor6.getText();
         String instructor_id7=instructor7.getText();
-        if(isDifferent(d))
-            JOptionPane.showMessageDialog(null, "Same Course selected twice","Failed",JOptionPane.INFORMATION_MESSAGE);
-
-        if(!notAllNull(d))
-            JOptionPane.showMessageDialog(null, "Must three courses get selected","Failed",JOptionPane.INFORMATION_MESSAGE);
+        if(isDifferent(d)) {
+            JOptionPane.showMessageDialog(null, "Same Course selected twice", "Failed", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        if(!notAllNull(d)) {
+            JOptionPane.showMessageDialog(null, "Must three courses get selected", "Failed", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
         else {
             sql = "insert into student(student_Fname,student_Mname,student_lname,student_gpa,course1,course2,course3,course4,course5,course6,course7) values ('" + fname
                     + "','"
