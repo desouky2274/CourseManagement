@@ -3,7 +3,7 @@ package com.company.gui;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
-
+import java.util.ArrayList;
 
 
 public class MakeSurvey extends javax.swing.JFrame {
@@ -162,16 +162,17 @@ public class MakeSurvey extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {
          try {
-            String[] course = new String[7];
+             int count = 0;
+            ArrayList<String> course = new ArrayList<>();
             int student_id = id;
             String sql = "select course1,course2,course3,course4,course5,course6,course7 from student where student_id =" + student_id;//Selecting all courses that Student had assigned
             ResultSet rs = stat.executeQuery(sql);
             rs.next();
             for (int x = 0; x < 7; x++) {//Putting these courses in an array
                 if (!rs.getString("course" + (x + 1)).equals("null"))
-                course[x] = rs.getString("course" + (x + 1));
+                    course.add(rs.getString("course" + (x + 1)));
             }
-        DefaultComboBoxModel mod = new DefaultComboBoxModel(course);//Make new ComboBox to prevent adding same courses again
+        DefaultComboBoxModel mod = new DefaultComboBoxModel(course.toArray());//Make new ComboBox to prevent adding same courses again
         select_course.setModel(mod);
 
     }
