@@ -1,6 +1,4 @@
-
-
-create database courseManegmentSystem
+create database courseManagementSystem
     on
     primary (name=coursedata,
     filename='c:\Software\DataBase\courseData.mdf',
@@ -13,180 +11,180 @@ create database courseManegmentSystem
         size=3MB,
         maxsize=5MB,
         filegrowth=1MB)
-		
 
-	
+
+
 create table student
 (
-     student_ID int identity(10001,1) primary key,
-     student_Fname nvarchar(10),
-     student_Mname nvarchar(10),
-     student_lname nvarchar(10),
-     student_gpa float not null,
-     course1  nvarchar(10),
-     course2  nvarchar(10),
-     course3  nvarchar(10),
-     course4  nvarchar(10),
-     course5  nvarchar(10),
-     course6  nvarchar(10),
-     course7  nvarchar(10),
+    student_ID int identity(10001,1) primary key,
+    student_Fname nvarchar(15),
+    student_Mname nvarchar(15),
+    student_lname nvarchar(15),
+    student_gpa float not null,
+    course1  nvarchar(10),
+    course2  nvarchar(10),
+    course3  nvarchar(10),
+    course4  nvarchar(10),
+    course5  nvarchar(10),
+    course6  nvarchar(10),
+    course7  nvarchar(10),
 )
 create table instructor
 (
-     instructor_ID int identity(101,1) primary key,
-     instructor_Fname nvarchar(10),
-     instructor_Mname nvarchar(10),
-     instructor_lname nvarchar(10),
-     course1  nvarchar(10),
-     course2  nvarchar(10),
-     course3  nvarchar(10),
-     course4  nvarchar(10),
-     course5  nvarchar(10),
+    instructor_ID int identity(101,1) primary key,
+    instructor_Fname nvarchar(15),
+    instructor_Mname nvarchar(15),
+    instructor_lname nvarchar(15),
+    course1  nvarchar(10),
+    course2  nvarchar(10),
+    course3  nvarchar(10),
+    course4  nvarchar(10),
+    course5  nvarchar(10),
 
 )
 create table allAdmin
 (
-     admin_ID int identity(1,1) primary key,
-     admin_Fname nvarchar(10),
-     admin_Mname nvarchar(10),
-     admin_lname nvarchar(10),
+    admin_ID int identity(1,1) primary key,
+    admin_Fname nvarchar(15),
+    admin_Mname nvarchar(15),
+    admin_lname nvarchar(15),
 )
 create table allPassword
 (
-     id int,
-     pass nvarchar(100) ,
-     person nvarchar(10)
+    id int,
+    pass nvarchar(100) ,
+    person nvarchar(10)
 )
 create table course
 (
-     nameOfCourse nvarchar(10),
-     courseCode nvarchar(10) primary key,
-     startDate date,
-     endDate date,
-     daysOfCourse int,
-     numberOfHours int,
-     price smallmoney,
-     room nvarchar(10),
-	 publish bit
+    nameOfCourse nvarchar(15),
+    courseCode nvarchar(10) primary key,
+    startDate date,
+    endDate date,
+    daysOfCourse int,
+    numberOfHours int,
+    price smallmoney,
+    room nvarchar(10),
+    publish bit
 )
 
 create table cs111
 (
-     id int identity(1,1) primary key,
-      studentId int foreign key references student(student_ID) on delete set null on update cascade,
-     assigment float,
-     practical float,
-	 midterm float,
-     final float,
-      instructorID int foreign key references instructor(instructor_ID) on delete set null on update cascade,
-	 survey nvarchar(15)
+    id int identity(1,1) primary key,
+    studentId int foreign key references student(student_ID) on delete set null on update cascade,
+    assignment float,
+    practical float,
+    midterm float,
+    final float,
+    instructorID int foreign key references instructor(instructor_ID) on delete set null on update cascade,
+    survey nvarchar(15)
 )
 
 create table pl221
 (
-     id int identity(1,1) primary key,
-      studentId int foreign key references student(student_ID) on delete set null on update cascade,
-     assigment float,
-     practical float,
-	 midterm float,
-     final float,
-      instructorID int foreign key references instructor(instructor_ID) on delete set null on update cascade,
-	 survey nvarchar(15)
+    id int identity(1,1) primary key,
+    studentId int foreign key references student(student_ID) on delete set null on update cascade,
+    assignment float,
+    practical float,
+    midterm float,
+    final float,
+    instructorID int foreign key references instructor(instructor_ID) on delete set null on update cascade,
+    survey nvarchar(15)
 )
 
 create table db221
 (
-     id int identity(1,1) primary key,
-      studentId int foreign key references student(student_ID) on delete set null on update cascade,
-     assigment float,
-     practical float,
-	 midterm float,
-     final float,
-      instructorID int foreign key references instructor(instructor_ID) on delete set null on update cascade,
-	 survey nvarchar(15)
+    id int identity(1,1) primary key,
+    studentId int foreign key references student(student_ID) on delete set null on update cascade,
+    assignment float,
+    practical float,
+    midterm float,
+    final float,
+    instructorID int foreign key references instructor(instructor_ID) on delete set null on update cascade,
+    survey nvarchar(15)
 )
 
 create table or231
 (
-     id int identity(1,1) primary key,
-      studentId int foreign key references student(student_ID) on delete set null on update cascade,
-     assigment float,
-     practical float,
-	 midterm float,
-     final float,
-      instructorID int foreign key references instructor(instructor_ID) on delete set null on update cascade,
-	 survey nvarchar(15)
+    id int identity(1,1) primary key,
+    studentId int foreign key references student(student_ID) on delete set null on update cascade,
+    assignment float,
+    practical float,
+    midterm float,
+    final float,
+    instructorID int foreign key references instructor(instructor_ID) on delete set null on update cascade,
+    survey nvarchar(15)
 )
 
 create table dc241
 (
     id int identity(1,1) primary key,
-      studentId int foreign key references student(student_ID) on delete set null on update cascade,
-     assigment float,
-     practical float,
-	 midterm float,
-     final float,
-      instructorID int foreign key references instructor(instructor_ID) on delete set null on update cascade,
-	 survey nvarchar(15)
+    studentId int foreign key references student(student_ID) on delete set null on update cascade,
+    assignment float,
+    practical float,
+    midterm float,
+    final float,
+    instructorID int foreign key references instructor(instructor_ID) on delete set null on update cascade,
+    survey nvarchar(15)
 )
 
 create table cs214
 (
     id int identity(1,1) primary key,
-      studentId int foreign key references student(student_ID) on delete set null on update cascade,
-     assigment float,
-     practical float,
-	 midterm float,
-     final float,
-      instructorID int foreign key references instructor(instructor_ID) on delete set null on update cascade,
-	 survey nvarchar(15)
+    studentId int foreign key references student(student_ID) on delete set null on update cascade,
+    assignment float,
+    practical float,
+    midterm float,
+    final float,
+    instructorID int foreign key references instructor(instructor_ID) on delete set null on update cascade,
+    survey nvarchar(15)
 )
 
 create table ld361
 (
     id int identity(1,1) primary key,
-      studentId int foreign key references student(student_ID) on delete set null on update cascade,
-     assigment float,
-     practical float,
-	 midterm float,
-     final float,
-      instructorID int foreign key references instructor(instructor_ID) on delete set null on update cascade,
-	 survey nvarchar(15)
+    studentId int foreign key references student(student_ID) on delete set null on update cascade,
+    assignment float,
+    practical float,
+    midterm float,
+    final float,
+    instructorID int foreign key references instructor(instructor_ID) on delete set null on update cascade,
+    survey nvarchar(15)
 )
 create table cs316
 (
     id int identity(1,1) primary key,
-      studentId int foreign key references student(student_ID) on delete set null on update cascade,
-     assigment float,
-     practical float,
-	 midterm float,
-     final float,
-      instructorID int foreign key references instructor(instructor_ID) on delete set null on update cascade,
-	 survey nvarchar(15)
+    studentId int foreign key references student(student_ID) on delete set null on update cascade,
+    assignment float,
+    practical float,
+    midterm float,
+    final float,
+    instructorID int foreign key references instructor(instructor_ID) on delete set null on update cascade,
+    survey nvarchar(15)
 )
 
 create table it431
 (
-     id int identity(1,1) primary key,
-      studentId int foreign key references student(student_ID) on delete set null on update cascade,
-     assigment float,
-     practical float,
-	 midterm float,
-     final float,
-      instructorID int foreign key references instructor(instructor_ID) on delete set null on update cascade,
-	 survey nvarchar(15)
+    id int identity(1,1) primary key,
+    studentId int foreign key references student(student_ID) on delete set null on update cascade,
+    assignment float,
+    practical float,
+    midterm float,
+    final float,
+    instructorID int foreign key references instructor(instructor_ID) on delete set null on update cascade,
+    survey nvarchar(15)
 )
 
 create table cs419
 (
-     id int identity(1,1) primary key,
-      studentId int foreign key references student(student_ID) on delete set null on update cascade,
-     assigment float,
-     practical float,
-	 midterm float,
-     final float,
-      instructorID int foreign key references instructor(instructor_ID) on delete set null on update cascade,
-	 survey nvarchar(15)
+    id int identity(1,1) primary key,
+    studentId int foreign key references student(student_ID) on delete set null on update cascade,
+    assignment float,
+    practical float,
+    midterm float,
+    final float,
+    instructorID int foreign key references instructor(instructor_ID) on delete set null on update cascade,
+    survey nvarchar(15)
 )
 
 
@@ -219,6 +217,4 @@ ALTER TABLE cs111
 
 ALTER TABLE cs316
     ADD total AS cs316.assignment + cs316.final + cs316.midterm + cs316.practical PERSISTED
-
-
 
