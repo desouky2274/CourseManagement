@@ -108,7 +108,13 @@ public class DeleteInstructor extends javax.swing.JFrame {
 
     private void okActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
         try {
+            String idd = instructor_id.getText();
+            if (idd.equals("")){
+                JOptionPane.showMessageDialog(null, "Empty Field", "Failed", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
             int id = Integer.parseInt(instructor_id.getText());
+
             String sql = "delete from instructor where instructor_id=" + id;
             stat.executeUpdate(sql);
             sql = "delete from allpassword where id=" + id;

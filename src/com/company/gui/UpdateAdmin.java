@@ -140,11 +140,18 @@ public class UpdateAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void okActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
-        int id =Integer .parseInt(admin_id.getText());
+
+        String idd = admin_id.getText();
         String column = (String) column_update.getSelectedItem();
         String update=data_update.getText();
+        if (idd.equals("") || column.equals("") || update.equals("")){
+            JOptionPane.showMessageDialog(null, "Empty Field", "Failed", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        int id =Integer .parseInt(admin_id.getText());
         String sql="update allAdmin set "+column+"='"+update+"' where admin_id='"+id+"'";
         int result = stat.executeUpdate(sql);
+
         if (result == 1)
             JOptionPane.showMessageDialog(null, column+" has been updated successfully","Success",JOptionPane.INFORMATION_MESSAGE);
         else

@@ -221,6 +221,10 @@ public class AddInstructor extends javax.swing.JFrame {
             String mname = midlename.getText();
             String lname = lastname.getText();
             String pass = password.getText();
+            if (fname.equals("") || mname.equals("") || lname.equals("") || pass.equals("")){
+                JOptionPane.showMessageDialog(null, "Empty Field", "Failed", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
             String []course = new String[5];
              course[0] = Course1.getText();
              course[1] = Course2.getText();

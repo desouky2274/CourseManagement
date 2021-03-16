@@ -114,7 +114,14 @@ public class DeleteStudent extends javax.swing.JFrame {
 
     private void okActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_okActionPerformed
         try{
+            String idd = student_id.getText();
+            if (idd.equals("")){
+                JOptionPane.showMessageDialog(null, "Empty Field", "Failed", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
             int id =Integer .parseInt(student_id.getText());
+
+
             String []course = new String[7];
             String sql = "select course1,course2,course3,course4,course5,course6,course7 from student where student_ID ="+id;// Put all the courses that this student has already assigned in a array of courses
             ResultSet rs = stat.executeQuery(sql);

@@ -148,6 +148,10 @@ public class AddAdmin extends javax.swing.JFrame {
             String middleName = middlename.getText();
             String lastName = lastname.getText();
             String pass = password.getText();
+            if (firstName.equals("") || middleName.equals("") || lastName.equals("") || pass.equals("")){
+                JOptionPane.showMessageDialog(null, "Empty Field", "Failed", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
 
             String sql = "insert into allAdmin(admin_Fname,admin_Mname,admin_lname) values ('"+firstName+"','"+middleName+"','"+lastName+"')";
             stat.executeUpdate(sql);

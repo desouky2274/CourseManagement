@@ -148,10 +148,15 @@ public class AddGrade extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//Action done after pressing OK button meant to update the grades of certain student
         try {
-            int id = Integer.parseInt(jTextField1.getText());
+            String idd = jTextField1.getText();
             String courseCode = jTextField2.getText();
             String gradeType = jComboBox1.getSelectedItem().toString();
             int grade = Integer.parseInt(jTextField3.getText());
+            if (idd.equals("") || courseCode.equals("") || gradeType.equals("")){
+                JOptionPane.showMessageDialog(null, "Empty Field", "Failed", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+                int id = Integer.parseInt(jTextField1.getText());
             String sql = "UPDATE " + courseCode + " SET " + gradeType.toLowerCase()+" = "+ grade + " WHERE studentId = " + id;
             int Result = stat.executeUpdate(sql);
             if (Result == 1)

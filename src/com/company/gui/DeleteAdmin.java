@@ -120,7 +120,13 @@ public class DeleteAdmin extends javax.swing.JFrame {
 
     private void okActionPerformed(java.awt.event.ActionEvent evt) {
         try {
+            String idd = admin_id.getText();
+            if (idd.equals("")){
+                JOptionPane.showMessageDialog(null, "Empty Field", "Failed", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
             int id = Integer.parseInt(admin_id.getText());
+
             String sql = "delete from allAdmin where admin_id=" + id;
             stat.executeUpdate(sql);
             sql = "delete from allPassword where id ="+id;

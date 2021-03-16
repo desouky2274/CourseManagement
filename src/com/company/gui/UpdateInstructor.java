@@ -140,9 +140,16 @@ public class UpdateInstructor extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void okActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_okActionPerformed
-        int id =Integer .parseInt(instructor_id.getText());
+
+        String idd = instructor_id.getText();
         String column = (String) column_update.getSelectedItem();
         String update=data_update.getText();
+        if(idd.equals("") || column.equals("") || update.equals("")){
+            JOptionPane.showMessageDialog(null, "Empty Field", "Failed", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        int id =Integer .parseInt(instructor_id.getText());
         String sql="update instructor set "+column+"='"+update+"' where instructor_ID='"+id+"'";
         int result = stat.executeUpdate(sql);
         if (result == 1)
