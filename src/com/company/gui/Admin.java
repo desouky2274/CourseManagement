@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class admin extends javax.swing.JFrame {
+public class Admin extends javax.swing.JFrame {
 
     public  static Connection con;
     public static Statement stat;
@@ -22,13 +22,13 @@ public class admin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"SQL connection not found","Error",JOptionPane.ERROR_MESSAGE);
         }
     }
-    public admin() {
+    public Admin() {
         initComponents();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
         setResizable(false);
     }
-    public admin(int id) {
+    public Admin(int id) {
         this.id = id;
         initComponents();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
@@ -214,61 +214,61 @@ public class admin extends javax.swing.JFrame {
     }// </editor-fold>
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
-        addStudent m = new addStudent();
+        AddStudent m = new AddStudent();
         m.setVisible(true);
         dispose();
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        addInstructor m = new addInstructor();
+        AddInstructor m = new AddInstructor();
         m.setVisible(true);
         dispose();
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-        addAdmin m = new addAdmin();
+        AddAdmin m = new AddAdmin();
         m.setVisible(true);
         dispose();
     }
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
-        updateStudent m = new updateStudent();
+        UpdateStudent m = new UpdateStudent();
         m.setVisible(true);
         dispose();// TODO add your handling code here:
     }
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {
-        deleteStudent m = new deleteStudent();
+        DeleteStudent m = new DeleteStudent();
         m.setVisible(true);
         dispose();        // TODO add your handling code here:
     }
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
-        deleteInstructor m = new deleteInstructor();
+        DeleteInstructor m = new DeleteInstructor();
         m.setVisible(true);
         dispose();         // TODO add your handling code here:
     }
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {
-        deleteAdmin m = new deleteAdmin();
+        DeleteAdmin m = new DeleteAdmin();
         m.setVisible(true);
         dispose();         // TODO add your handling code here:
     }
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
-        updateInstructor m = new updateInstructor();
+        UpdateInstructor m = new UpdateInstructor();
         m.setVisible(true);
         dispose();// TODO add your handling code here:
     }
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {
-        updateAdmin m = new updateAdmin();
+        UpdateAdmin m = new UpdateAdmin();
         m.setVisible(true);
         dispose();// TODO add your handling code here:
     }
 
     private void signOutActionPerformed(java.awt.event.ActionEvent evt) {
-        signIn m = new signIn();
+        SignIn m = new SignIn();
         m.setVisible(true);
         dispose();
     }
@@ -287,21 +287,15 @@ public class admin extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new admin().setVisible(true);
+                new Admin().setVisible(true);
             }
         });
     }

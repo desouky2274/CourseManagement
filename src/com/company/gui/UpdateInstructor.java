@@ -11,7 +11,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class updateInstructor extends javax.swing.JFrame {
+public class UpdateInstructor extends javax.swing.JFrame {
 
     public  static Connection con;
     public static Statement stat;
@@ -24,7 +24,7 @@ public class updateInstructor extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"SQL connection not found","Error",JOptionPane.ERROR_MESSAGE);
         }
     }
-    public updateInstructor() {
+    public UpdateInstructor() {
         initComponents();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
@@ -134,7 +134,7 @@ public class updateInstructor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        adminPage m = new adminPage();
+        AdminPage m = new AdminPage();
          m.setVisible(true);
          dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -164,20 +164,20 @@ public class updateInstructor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(updateInstructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateInstructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(updateInstructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateInstructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(updateInstructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateInstructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(updateInstructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateInstructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new updateInstructor().setVisible(true);
+                new UpdateInstructor().setVisible(true);
             }
         });
     }

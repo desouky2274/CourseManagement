@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
-public class updateStudent extends javax.swing.JFrame {
+public class UpdateStudent extends javax.swing.JFrame {
 
     public  static Connection con;
     public static Statement stat;
@@ -26,7 +26,7 @@ public class updateStudent extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"SQL connection not found","Error",JOptionPane.ERROR_MESSAGE);
         }
     }
-    public updateStudent() {
+    public UpdateStudent() {
         initComponents();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
@@ -134,7 +134,7 @@ public class updateStudent extends javax.swing.JFrame {
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        adminPage m = new adminPage();
+        AdminPage m = new AdminPage();
          m.setVisible(true);
          dispose();
     }
@@ -145,23 +145,28 @@ public class updateStudent extends javax.swing.JFrame {
         String update=data_update.getText();
         float gpa;
         int  level;
+        int result;
         if (column.equals("student_gpa")) {
 
             gpa = Float.parseFloat(update);
             String sql="update student set "+column+ " = " +gpa+" where student_ID='"+id+"'";
-            stat.executeUpdate(sql);
+            result = stat.executeUpdate(sql);
         }
         else if (column.equals("studentLevel"))
         {
             System.out.println("1");
             level = Integer.parseInt(update);
             String sql="update student set "+column+ " = " +level+" where student_ID='"+id+"'";
-            stat.executeUpdate(sql);
+            result = stat.executeUpdate(sql);
         }
         else {
             String sql = "update student set " + column + " = '" + update + "' where student_ID='" + id +"'";
-            stat.executeUpdate(sql);
+            result = stat.executeUpdate(sql);
         }
+        if (result == 1)
+            JOptionPane.showMessageDialog(null, column+" has been updated successfully","Success",JOptionPane.INFORMATION_MESSAGE);
+        else
+            JOptionPane.showMessageDialog(null, column+" didn't get updated","Failed",JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
@@ -181,20 +186,20 @@ public class updateStudent extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(updateStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(updateStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(updateStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(updateStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new updateStudent().setVisible(true);
+                new UpdateStudent().setVisible(true);
             }
         });
     }

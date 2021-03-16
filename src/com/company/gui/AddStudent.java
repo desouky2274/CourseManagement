@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class addStudent extends javax.swing.JFrame {
+public class AddStudent extends javax.swing.JFrame {
 
     public  static Connection con;
     public static Statement stat;
@@ -27,7 +27,7 @@ public class addStudent extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"SQL connection not found","Error",JOptionPane.ERROR_MESSAGE);
         }
     }
-    public addStudent() {
+    public AddStudent() {
         initComponents();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
@@ -580,7 +580,7 @@ public class addStudent extends javax.swing.JFrame {
     }*/
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-        admin m = new admin();
+        Admin m = new Admin();
         m.setVisible(true);
         dispose();
     }
@@ -769,14 +769,14 @@ public class addStudent extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(addStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new addStudent().setVisible(true);
+                new AddStudent().setVisible(true);
             }
         });
     }

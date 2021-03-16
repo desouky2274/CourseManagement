@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
-public class dropCourse extends javax.swing.JFrame {
+public class DropCourse extends javax.swing.JFrame {
 
     public  static Connection con;
     public static Statement stat;
@@ -22,13 +22,13 @@ public class dropCourse extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"SQL connection not found","Error",JOptionPane.ERROR_MESSAGE);
         }
     }
-    public dropCourse() {
+    public DropCourse() {
         initComponents();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
         setResizable(false);
     }
-    public dropCourse(int id) {
+    public DropCourse(int id) {
         this.id = id;
         initComponents();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
@@ -132,7 +132,7 @@ public class dropCourse extends javax.swing.JFrame {
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        updateInfo i = new updateInfo();
+        UpdateInfo i = new UpdateInfo();
          i.setVisible(true);
          dispose();
     }
@@ -151,19 +151,19 @@ public class dropCourse extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(dropCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DropCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(dropCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DropCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(dropCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DropCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(dropCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DropCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new dropCourse().setVisible(true);
+                new DropCourse().setVisible(true);
             }
         });
     }

@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
 
-public class addInstructor extends javax.swing.JFrame {
+public class AddInstructor extends javax.swing.JFrame {
 
     public  static Connection con;
     public static Statement stat;
@@ -17,7 +17,7 @@ public class addInstructor extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"SQL connection not found","Error",JOptionPane.ERROR_MESSAGE);
         }
     }
-    public addInstructor() {
+    public AddInstructor() {
         initComponents();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
@@ -209,7 +209,7 @@ public class addInstructor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-        adminPage m = new adminPage();
+        AdminPage m = new AdminPage();
          m.setVisible(true);
          dispose();
     }
@@ -221,31 +221,27 @@ public class addInstructor extends javax.swing.JFrame {
             String mname = midlename.getText();
             String lname = lastname.getText();
             String pass = password.getText();
-            String course1 = Course1.getText();
-            String course2 = Course2.getText();
-            String course3 = Course3.getText();
-            String course4 = Course4.getText();
-            String course5 = Course5.getText();
-                if (course1.equals(""));
-                course1 = null;
-                if (course2.equals(""));
-                course2 = null;
-                if (course3.equals(""));
-                course3 = null;
-                if (course4.equals(""));
-                course4 = null;
-                if (course5.equals(""));
-                course5 = null;
+            String []course = new String[5];
+             course[0] = Course1.getText();
+             course[1] = Course2.getText();
+             course[2] = Course3.getText();
+             course[3] = Course4.getText();
+             course[4] = Course5.getText();
+            for (int i = 0; i < course.length; i++) {
+                if (course[i].equals(""))
+                    course[i] = "null";
+            }
 
-            sql = "insert into instructor(instructor_Fname,instructor_Mname,instructor_lname,course1,course2,course3,course4,course5) values ('" + fname + "','" + mname + "','" + lname + "','"+ course1 + "','" + course2 + "','" + course3 + "','" + course4 + "','" + course5 + "')";
-            stat.executeUpdate(sql);
+
+            sql = "insert into instructor(instructor_Fname,instructor_Mname,instructor_lname,course1,course2,course3,course4,course5) values ('" + fname + "','" + mname + "','" + lname + "','"+ course[0] + "','" + course[1] + "','" + course[2] + "','" + course[3] + "','" + course[4] + "')";
+            int result1 = stat.executeUpdate(sql);
             sql = "select instructor_ID from instructor where instructor_Fname = '" + fname + "' and instructor_Mname = '" + mname + "' and instructor_lname = '" + lname + "' ";
             ResultSet rc = stat.executeQuery(sql);
             rc.next();
             int id = rc.getInt("instructor_ID");
             sql = "insert into allpassword(id,pass,person)values('" + id + "','" + pass + "','instructor')";
-            int result = stat.executeUpdate(sql);
-            if(result ==1)
+            int result2 = stat.executeUpdate(sql);
+            if((result1 + result2) == 2)
             {
                 JOptionPane.showMessageDialog(null,"Instructor account has been created successfully","success",JOptionPane.INFORMATION_MESSAGE);
             }
@@ -267,18 +263,18 @@ public class addInstructor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(addInstructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddInstructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(addInstructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddInstructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(addInstructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddInstructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(addInstructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddInstructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new addInstructor().setVisible(true);
+                new AddInstructor().setVisible(true);
             }
         });
     }

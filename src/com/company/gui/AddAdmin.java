@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
 
-public class addAdmin extends javax.swing.JFrame {
+public class AddAdmin extends javax.swing.JFrame {
 
     public  static Connection con;
     public static Statement stat;
@@ -17,7 +17,7 @@ public class addAdmin extends javax.swing.JFrame {
         }
     }
 
-    public addAdmin() {
+    public AddAdmin() {
         initComponents();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
@@ -137,7 +137,7 @@ public class addAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-        adminPage m = new adminPage();
+        AdminPage m = new AdminPage();
          m.setVisible(true);
          dispose();
     }
@@ -171,7 +171,7 @@ public class addAdmin extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new addAdmin().setVisible(true);
+                new AddAdmin().setVisible(true);
             }
         });
     }

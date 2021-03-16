@@ -7,10 +7,10 @@ package com.company.gui;
 
 import java.awt.*;
 
-public class adminPage extends javax.swing.JFrame {
+public class AdminPage extends javax.swing.JFrame {
 
 
-    public adminPage() {
+    public AdminPage() {
         initComponents();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
@@ -178,55 +178,55 @@ public class adminPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-         addStudent m = new addStudent();
+         AddStudent m = new AddStudent();
          m.setVisible(true);
          dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         addInstructor m = new addInstructor();
+         AddInstructor m = new AddInstructor();
          m.setVisible(true);
          dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        addAdmin m = new addAdmin();
+        AddAdmin m = new AddAdmin();
          m.setVisible(true);
          dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        updateStudent m = new updateStudent();
+        UpdateStudent m = new UpdateStudent();
          m.setVisible(true);
          dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-         deleteStudent m = new deleteStudent();
+         DeleteStudent m = new DeleteStudent();
          m.setVisible(true);
          dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        deleteInstructor m = new deleteInstructor();
+        DeleteInstructor m = new DeleteInstructor();
          m.setVisible(true);
          dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        deleteAdmin m = new deleteAdmin();
+        DeleteAdmin m = new DeleteAdmin();
          m.setVisible(true);
          dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        updateInstructor m = new updateInstructor();
+        UpdateInstructor m = new UpdateInstructor();
          m.setVisible(true);
          dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        updateAdmin m = new updateAdmin();
+        UpdateAdmin m = new UpdateAdmin();
          m.setVisible(true);
          dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
@@ -248,20 +248,20 @@ public class adminPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(adminPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(adminPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(adminPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(adminPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new adminPage().setVisible(true);
+                new AdminPage().setVisible(true);
             }
         });
     }

@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class addGrade extends javax.swing.JFrame {
+public class AddGrade extends javax.swing.JFrame {
 
     public static Connection con;
     public static Statement stat;
@@ -18,7 +18,7 @@ public class addGrade extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"SQL connection not found","Error",JOptionPane.ERROR_MESSAGE);
         }
     }
-    public addGrade() {
+    public AddGrade() {
         initComponents();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
@@ -162,7 +162,7 @@ public class addGrade extends javax.swing.JFrame {
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//Action done after pressing Back button meant to return Back to Instructor Main Page
-        instructor m = new instructor();
+        Instructor m = new Instructor();
         m.setVisible(true);
         dispose();
     }
@@ -174,7 +174,7 @@ public class addGrade extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new addGrade().setVisible(true);
+                new AddGrade().setVisible(true);
             }
         });
     }

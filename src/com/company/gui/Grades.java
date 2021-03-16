@@ -137,7 +137,7 @@ public class Grades extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         //GEN-FIRST:event_jButton1ActionPerformed
-        specificCourseGrade s = new specificCourseGrade(id,Courses.getSelectedItem().toString());
+        SpecificCourseGrade s = new SpecificCourseGrade(id,Courses.getSelectedItem().toString());
          s.setVisible(true);
          dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

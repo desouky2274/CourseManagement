@@ -110,13 +110,13 @@ public class Student extends javax.swing.JFrame {
     }
 
     private void ShowAllCoursesActionPerformed(java.awt.event.ActionEvent evt) {
-        allCourses m = new allCourses(id);
+        AllCourses m = new AllCourses(id);
         m.setVisible(true);
         dispose();
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        updateInfo m = new updateInfo(id);
+        UpdateInfo m = new UpdateInfo(id);
         m.setVisible(true);
         dispose();
     }
@@ -129,13 +129,13 @@ public class Student extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
 
-        makeSurvey m = new makeSurvey(id);
+        MakeSurvey m = new MakeSurvey(id);
          m.setVisible(true);
          dispose();
     }
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
-        signIn m = new signIn();
+        SignIn m = new SignIn();
         m.setVisible(true);
         dispose();
     }

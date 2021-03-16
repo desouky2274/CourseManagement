@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
 
-public class specificCourseGrade extends javax.swing.JFrame {
+public class SpecificCourseGrade extends javax.swing.JFrame {
 
     public  static Connection con;
     public static Statement stat;
@@ -19,14 +19,14 @@ public class specificCourseGrade extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"SQL connection not found","Error",JOptionPane.ERROR_MESSAGE);
         }
     }
-    public specificCourseGrade() {
+    public SpecificCourseGrade() {
         initComponents();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
         setResizable(false);
     }
 
-    public specificCourseGrade(int id, String courseCode) {
+    public SpecificCourseGrade(int id, String courseCode) {
         this.id = id;
         this.courseCode = courseCode;
         initComponents();
@@ -120,7 +120,7 @@ public class specificCourseGrade extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new specificCourseGrade().setVisible(true);
+                new SpecificCourseGrade().setVisible(true);
             }
         });
     }

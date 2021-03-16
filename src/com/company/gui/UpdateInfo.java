@@ -3,16 +3,16 @@ package com.company.gui;
 
 import java.awt.*;
 
-public class updateInfo extends javax.swing.JFrame {
+public class UpdateInfo extends javax.swing.JFrame {
 
     public static int id;
-    public updateInfo() {
+    public UpdateInfo() {
         initComponents();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(d.width/2-this.getSize().width/2,d.height/2 - this.getSize().height/2);
         setResizable(false);
     }
-    public updateInfo(int id) {
+    public UpdateInfo(int id) {
         this.id = id;
         initComponents();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
@@ -97,14 +97,14 @@ public class updateInfo extends javax.swing.JFrame {
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        addCourse a = new addCourse(id);
+        AddCourse a = new AddCourse(id);
          a.setVisible(true);
          dispose();
 
     }
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
-            newPassword p = new newPassword(id);
+            NewPassword p = new NewPassword(id);
             p.setVisible(true);
             dispose();
            
@@ -112,7 +112,7 @@ public class updateInfo extends javax.swing.JFrame {
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-           dropCourse d = new dropCourse(id);
+           DropCourse d = new DropCourse(id);
             d.setVisible(true);
             dispose();
     }
@@ -135,20 +135,20 @@ public class updateInfo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(updateInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(updateInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(updateInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(updateInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new updateInfo().setVisible(true);
+                new UpdateInfo().setVisible(true);
             }
         });
     }
