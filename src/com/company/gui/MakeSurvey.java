@@ -168,7 +168,7 @@ public class MakeSurvey extends javax.swing.JFrame {
             ResultSet rs = stat.executeQuery(sql);
             rs.next();
             for (int x = 0; x < 7; x++) {//Putting these courses in an array
-                if (rs.getString("course" + (x + 1)) != null)
+                if (rs.getString("course" + (x + 1)).equals("null"))
                 course[x] = rs.getString("course" + (x + 1));
             }
         DefaultComboBoxModel mod = new DefaultComboBoxModel(course);//Make new ComboBox to prevent adding same courses again
