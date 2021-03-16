@@ -4,6 +4,7 @@ package com.company.gui;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -114,9 +115,24 @@ public class DeleteStudent extends javax.swing.JFrame {
     private void okActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_okActionPerformed
         try{
             int id =Integer .parseInt(student_id.getText());
-            String sql ="delete from student where student_ID="+id;
+            String []course = new String[7];
+            String sql = "select course1,course2,course3,course4,course5,course6,course7 from student where student_ID ="+id;// Put all the courses that this student has already assigned in a array of courses
+            ResultSet rs = stat.executeQuery(sql);
+            rs.next();
+            for (int i = 0; i < 7; i++) {
+                course[i] = rs.getString("course"+(i+1));
+            }
+
+            for (int i = 0; i < 7; i++) {
+                if (!course[i].equals("null")) {
+                    sql = "delete from " + course[i] + " where studentId = " + id;
+                    stat.executeUpdate(sql);
+                }
+            }
+             sql ="delete from student where student_ID="+id;
             stat.executeUpdate(sql);
              sql ="delete from allpassword where id="+id;
+
             int result = stat.executeUpdate(sql);
             if(result ==1) {
                     JOptionPane.showMessageDialog(null,"Student account has been Deleted successfully","success",JOptionPane.INFORMATION_MESSAGE);

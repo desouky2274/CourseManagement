@@ -144,7 +144,11 @@ public class UpdateAdmin extends javax.swing.JFrame {
         String column = (String) column_update.getSelectedItem();
         String update=data_update.getText();
         String sql="update allAdmin set "+column+"='"+update+"' where admin_id='"+id+"'";
-        stat.executeUpdate(sql);
+        int result = stat.executeUpdate(sql);
+        if (result == 1)
+            JOptionPane.showMessageDialog(null, column+" has been updated successfully","Success",JOptionPane.INFORMATION_MESSAGE);
+        else
+            JOptionPane.showMessageDialog(null, column+" didn't get updated","Failed",JOptionPane.INFORMATION_MESSAGE);
     }
 
 

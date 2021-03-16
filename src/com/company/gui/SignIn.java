@@ -99,8 +99,6 @@ public class SignIn extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
-
     private void sign_inActionPerformed(java.awt.event.ActionEvent evt) {
         Student student = new Student();
         Admin admin = new Admin();

@@ -144,7 +144,11 @@ public class UpdateInstructor extends javax.swing.JFrame {
         String column = (String) column_update.getSelectedItem();
         String update=data_update.getText();
         String sql="update instructor set "+column+"='"+update+"' where instructor_ID='"+id+"'";
-        stat.executeUpdate(sql);
+        int result = stat.executeUpdate(sql);
+        if (result == 1)
+            JOptionPane.showMessageDialog(null, column+" has been updated successfully","Success",JOptionPane.INFORMATION_MESSAGE);
+        else
+            JOptionPane.showMessageDialog(null, column+" didn't get updated","Failed",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_okActionPerformed --Incorrect syntax near 'instructor_Fname'.
 
     /**

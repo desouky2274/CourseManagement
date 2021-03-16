@@ -145,10 +145,7 @@ public class Grades extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
             Student s = new Student();
          s.setVisible(true);
-         dispose();           
-
-
-
+         dispose();
     }
 
     /**
