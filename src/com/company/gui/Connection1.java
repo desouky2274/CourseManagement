@@ -12,10 +12,10 @@ public  class Connection1 {
     public static Statement stat;
     static {
         try {
-            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=courseManegmentSystem;user=omar415;password=omar");
+            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=courseManagementSystem;user=omar415;password=omar");
             stat = con.createStatement();
-        } catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
+
             JOptionPane.showMessageDialog(null,"SQL connection not found","Error",JOptionPane.ERROR_MESSAGE);
         }
     }
