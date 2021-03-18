@@ -236,7 +236,6 @@ public class AddInstructor extends javax.swing.JFrame {
                     course[i] = "null";
             }
 
-
             sql = "insert into instructor(instructor_Fname,instructor_Mname,instructor_lname,course1,course2,course3,course4,course5) values ('" + fname + "','" + mname + "','" + lname + "','"+ course[0] + "','" + course[1] + "','" + course[2] + "','" + course[3] + "','" + course[4] + "')";
             int result1 = stat.executeUpdate(sql);
             sql = "select instructor_ID from instructor where instructor_Fname = '" + fname + "' and instructor_Mname = '" + mname + "' and instructor_lname = '" + lname + "' ";
