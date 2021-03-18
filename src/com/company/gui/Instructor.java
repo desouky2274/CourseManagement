@@ -16,7 +16,7 @@ public class Instructor extends javax.swing.JFrame {
     public static int id;
     static {
         try {
-            con = Connection1.getCon(); //DriverManager.getConnection("jdbc:sqlserver://DESKTOP-QA5TUAT:1433;databaseName=courseManegmentSystem;user=omar;password=admin");
+            con = Connection1.getCon(); //DriverManager.getConnection("jdbc:sqlserver://DESKTOP-QA5TUAT:1433;databaseName=courseManagementSystem;user=omar415;password=omar");
             stat = con.createStatement();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"SQL connection not found","Error",JOptionPane.ERROR_MESSAGE);

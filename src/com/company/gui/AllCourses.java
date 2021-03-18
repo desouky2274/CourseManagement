@@ -8,7 +8,6 @@ public class AllCourses extends javax.swing.JFrame {
     public  static Connection con;
     public static Statement stat;
     public static int id;
-    private final static String newline = "\n";
     static {
         try {
             con = Connection1.getCon(); //DriverManager.getConnection("jdbc:sqlserver://DESKTOP-QA5TUAT:1433;databaseName=courseManegmentSystem;user=omar;password=admin");
@@ -108,15 +107,15 @@ public class AllCourses extends javax.swing.JFrame {
         ResultSet rs = stat.executeQuery(sql);
         while (rs.next()) {
             for (int i = 0; i <7; i++) {
-                course[i] = rs.getString("course"+(i+1));
+                course[i] = rs.getString("course"+(i+1)); //cours
             }
         }
 
         area.setText(area.getText()+course[0]);
         for(int i=1; i <7; i++)
         {
-            if(course[i] != null) {
-                String s = newline + course[i];
+            if(!course[i].equals("null")) {
+                String s = "\n" + course[i];
                 area.setText(area.getText()+s);
             }
         }
