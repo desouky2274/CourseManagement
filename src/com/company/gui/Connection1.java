@@ -15,7 +15,6 @@ public  class Connection1 {
             con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=courseManagementSystem;user=omar415;password=omar");
             stat = con.createStatement();
         } catch (SQLException ex) {
-
             JOptionPane.showMessageDialog(null,"SQL connection not found","Error",JOptionPane.ERROR_MESSAGE);
         }
     }
