@@ -5,6 +5,7 @@ package com.company.gui;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -17,8 +18,7 @@ public class Instructor extends javax.swing.JFrame {
         try {
             con = Connection1.getCon(); //DriverManager.getConnection("jdbc:sqlserver://DESKTOP-QA5TUAT:1433;databaseName=courseManegmentSystem;user=omar;password=admin");
             stat = con.createStatement();
-        } catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"SQL connection not found","Error",JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -65,6 +65,11 @@ public class Instructor extends javax.swing.JFrame {
         });
 
         jButton2.setText("Publish");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("publish grades");
 
@@ -130,6 +135,33 @@ public class Instructor extends javax.swing.JFrame {
         dispose();
     }
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+        try {
+            String []course = new String[7];
+            String sql = "select course1,course2,course3,course4,course5 from instructor where instructor_ID = " + id;
+            ResultSet rs = stat.executeQuery(sql);
+            rs.next();
+            for (int i = 0; i < 5; i++) {
+                course[i] = rs.getString("course"+(i+1));
+            }
+            int r = 0;
+            for (int x = 0; x < 5; x++) {
+                if (!course[x].equals("null")) {
+                    String q = "course" + (x + 1);
+                    sql = "UPDATE course SET publish = 1 where courseCode = '"+course[x]+"'";
+                     r = stat.executeUpdate(sql);
+                }
+            }
+            if (r == 1)
+                JOptionPane.showMessageDialog(null, "Courses has been published successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+            else
+                JOptionPane.showMessageDialog(null, "Courses failed to be published", "Failed", JOptionPane.INFORMATION_MESSAGE);
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+
+    }
+
     private void signOutActionPerformed(java.awt.event.ActionEvent evt) {
         SignIn m = new SignIn();
         m.setVisible(true);
@@ -146,13 +178,7 @@ public class Instructor extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Instructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Instructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Instructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Instructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
