@@ -68,7 +68,11 @@ public class UpdateInstructor extends javax.swing.JFrame {
         jButton1.setText("OK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                try {
+                    jButton1ActionPerformed(evt);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
             }
         });
 
@@ -143,8 +147,22 @@ public class UpdateInstructor extends javax.swing.JFrame {
         dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_jButton1ActionPerformed
+        String idd = jTextField1.getText();
+        String column = (String) jComboBox1.getSelectedItem();
+        String update=jTextField2.getText();
+        if(idd.equals("") || column.equals("") || update.equals("")){
+            JOptionPane.showMessageDialog(null, "Empty Field", "Failed", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        int id =Integer .parseInt(jTextField1.getText());
+        String sql="update instructor set "+column+"='"+update+"' where instructor_ID='"+id+"'";
+        int result = stat.executeUpdate(sql);
+        if (result == 1)
+            JOptionPane.showMessageDialog(null, column+" has been updated successfully","Success",JOptionPane.INFORMATION_MESSAGE);
+        else
+            JOptionPane.showMessageDialog(null, column+" didn't get updated","Failed",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
