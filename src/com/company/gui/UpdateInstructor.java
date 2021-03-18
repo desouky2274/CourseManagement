@@ -134,7 +134,7 @@ public class UpdateInstructor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        AdminPage m = new AdminPage();
+        Admin m = new Admin();
          m.setVisible(true);
          dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed

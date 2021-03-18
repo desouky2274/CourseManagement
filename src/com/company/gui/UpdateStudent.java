@@ -196,7 +196,7 @@ public class UpdateStudent extends javax.swing.JFrame {
     }//GEN-LAST:event_okActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        AdminPage m = new AdminPage();
+        Admin m = new Admin();
         m.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
