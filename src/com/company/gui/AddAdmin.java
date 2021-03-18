@@ -185,7 +185,9 @@ public class AddAdmin extends javax.swing.JFrame {
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        Admin m = new Admin();
+        m.setVisible(true);
+        dispose();
     }
 
     /**

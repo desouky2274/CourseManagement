@@ -4,6 +4,7 @@ package com.company.gui;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -140,16 +141,17 @@ public class Grades extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) throws SQLException{
         try {
-            String[] course = new String[7];
+            ArrayList <String> course = new ArrayList<>();
             int student_id = id;
             String sql = "select course1,course2,course3,course4,course5,course6,course7 from student where student_id =" + student_id + "";
             ResultSet rs = stat.executeQuery(sql);
             rs.next();
             for (int x = 0; x < 7; x++) {
-                course[x] = rs.getString("course" + (x + 1));
+                if (!rs.getString("course" + (x + 1)).equals("null"))
+                    course.add(rs.getString("course" + (x + 1)));
             }
 
-            DefaultComboBoxModel mod = new DefaultComboBoxModel(course);
+            DefaultComboBoxModel mod = new DefaultComboBoxModel(course.toArray());
             Courses.setModel(mod);
         }
         catch (SQLException e) {

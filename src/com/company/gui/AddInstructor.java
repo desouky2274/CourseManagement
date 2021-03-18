@@ -238,7 +238,7 @@ public class AddInstructor extends javax.swing.JFrame {
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-        AdminPage m = new AdminPage();
+        Admin m = new Admin();
         m.setVisible(true);
         dispose();
     }
