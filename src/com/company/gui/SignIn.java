@@ -17,8 +17,7 @@ public class SignIn extends javax.swing.JFrame {
         try {
             con = Connection1.getCon();
             stat = con.createStatement();
-        } catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"SQL connection not found","Error",JOptionPane.ERROR_MESSAGE);
         }
     }

@@ -3,8 +3,11 @@ package com.company.gui;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
 public class MakeSurvey extends javax.swing.JFrame {
 
     public  static Connection con;
@@ -63,8 +66,13 @@ public class MakeSurvey extends javax.swing.JFrame {
         Avarage.setText("Avarage");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
-        jLabel1.setText("select coure");
+        jLabel1.setText("select course");
 
         select_course.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,6 +180,28 @@ public class MakeSurvey extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {
+        try {
+            ArrayList <String> course = new ArrayList<>();
+            int student_id = id;
+            String sql = "select course1,course2,course3,course4,course5,course6,course7 from student where student_id =" + student_id;
+            ResultSet rs = stat.executeQuery(sql);
+            rs.next();
+            for (int x = 0; x < 7; x++) {
+                if (!rs.getString("course" + (x + 1)).equals("null"))
+                    course.add(rs.getString("course" + (x + 1)));
+            }
+            DefaultComboBoxModel mod = new DefaultComboBoxModel(course.toArray());
+            select_course.setModel(mod);
+        }
+        catch (SQLException e) {
+            System.out.println("oops");
+            e.printStackTrace();
+        }
+    }
+
+
+
     private void select_courseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_select_courseActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_select_courseActionPerformed
@@ -189,11 +219,52 @@ public class MakeSurvey extends javax.swing.JFrame {
     }//GEN-LAST:event_Avarage2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        String survey =null;
+        String sql;
+        if(Excellent.isSelected())
+        {
+            survey="Excellent";
+        }
+        else if(Good.isSelected())
+        {
+            survey="Good";
+        }
+        else if(Avarage.isSelected())
+        {
+            survey="Avarage";
+        }
+        else if(poor.isSelected())
+        {
+            survey="poor";
+        }
+        else if(Very_poor.isSelected())
+        {
+            survey="Very_poor";
+        }
+        if (survey != null)
+        {
+            try {
+                id = 10032;
+                System.out.println(id);
+                sql = "UPDATE " + select_course.getSelectedItem() + " SET survey = '" + survey + "' WHERE studentId = " + 10032;
+                System.out.println("done");
+
+                sql = "UPDATE " + select_course.getSelectedItem() + " SET survey = '" + survey + "' WHERE studentId = " + id;
+                int result = stat.executeUpdate(sql);
+                if (result == 1){
+                    JOptionPane.showMessageDialog(null,"Thanks for filling this survey","Success",JOptionPane.INFORMATION_MESSAGE);
+                }
+            }catch (SQLException ex){
+                ex.printStackTrace();
+            }
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        Student m = new Student();
+        m.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

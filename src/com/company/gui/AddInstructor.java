@@ -228,8 +228,7 @@ public class AddInstructor extends javax.swing.JFrame {
             int id = rc.getInt("instructor_ID");
             sql = "insert into allpassword(id,pass,person)values('" + id + "','" + pass + "','instructor')";
             int result2 = stat.executeUpdate(sql);
-            if((result1 + result2) == 2)
-            {
+            if((result1 + result2) == 2) {
                 JOptionPane.showMessageDialog(null,"Instructor account has been created successfully","success",JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (SQLException ex) {

@@ -59,7 +59,7 @@ public class Admin extends javax.swing.JFrame {
 
         jFrame1 = new javax.swing.JFrame();
         jInternalFrame1 = new javax.swing.JInternalFrame();
-        jButton3 = new javax.swing.JButton();
+        addStudent = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -85,7 +85,7 @@ public class Admin extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(0, 0, 255));
+        setBackground(new java.awt.Color(8, 76, 191));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -95,10 +95,10 @@ public class Admin extends javax.swing.JFrame {
         jInternalFrame1.setBorder(null);
         jInternalFrame1.setVisible(true);
 
-        jButton3.setText("student");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        addStudent.setText("student");
+        addStudent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                addStudentActionPerformed(evt);
             }
         });
 
@@ -194,7 +194,7 @@ public class Admin extends javax.swing.JFrame {
                                         .addGroup(jInternalFrame1Layout.createSequentialGroup()
                                                 .addContainerGap()
                                                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(addStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(89, 89, 89)
@@ -220,7 +220,7 @@ public class Admin extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(addStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(41, 41, 41)
                                 .addComponent(jLabel3)
@@ -259,7 +259,7 @@ public class Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void addStudentActionPerformed(java.awt.event.ActionEvent evt) {
         AddStudent m = new AddStudent();
         m.setVisible(true);
         dispose();        // TODO add your handling code here:
@@ -359,7 +359,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton addStudent;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;

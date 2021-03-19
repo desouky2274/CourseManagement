@@ -12,7 +12,7 @@ public class SpecificCourseGrade extends javax.swing.JFrame {
     public static String courseCode;
     static {
         try {
-            con = Connection1.getCon();//con = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-QA5TUAT:1433;databaseName=courseManegmentSystem;user=omar;password=admin");
+            con = Connection1.getCon();//con = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-QA5TUAT:1433;databaseName=courseManagementSystem;user=omar415;password=omar");
             stat = con.createStatement();
         } catch (SQLException ex)
         {
@@ -99,10 +99,18 @@ public class SpecificCourseGrade extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) throws SQLException {//GEN-FIRST:event_formWindowOpened
 
         try {
-            String sql = "select total from "+courseCode+" where studentId =" + id ;
-            ResultSet rs = stat.executeQuery(sql);
-            rs.next();
-            jLabel3.setText(rs.getString("total"));
+            String sql = "select publish from course where courseCode = '"+  courseCode+ "'";
+            ResultSet rs1 = stat.executeQuery(sql);
+            rs1.next();
+            int publish = rs1.getInt("publish");
+            if (publish == 1) {
+                sql = "select total from " + courseCode + " where studentId =" + id;
+                ResultSet rs = stat.executeQuery(sql);
+                rs.next();
+                jLabel3.setText(rs.getString("total"));
+            }
+            else
+                jLabel3.setText("Not Publish yet");
         }
         catch (SQLException e) {
             System.out.println("oops");
